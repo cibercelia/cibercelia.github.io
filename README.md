@@ -20,7 +20,7 @@ Espacio didáctico y colaborativo creado como recurso de aprendizaje para el alu
 ## 🚀 Características de la Web
 
 1. **Docs-as-Code & PRs del Alumnado**: El alumnado puede publicar artículos técnicos, guías de laboratorio, writeups de CTF y noticias mediante Pull Requests en formato Markdown.
-2. **Visualizador Completo de Artículos**: Los artículos se abren en una página dedicada (`post.html?id=...`) con formateo Markdown completo, diseño profesional, bloques de código resaltados con botón de copiado y alertas de GitHub.
+2. **Generación Estática de Artículos (SSG)**: Cada artículo y noticia se compila automáticamente a su propia página HTML estática e independiente (`posts/<slug>/` y `noticias/<slug>/`) con URLs limpias al estilo de MkDocs o Hugo, formateo Markdown completo, bloques de código con resaltado y botón de copiado, y alertas de GitHub.
 3. **Búsqueda en Tiempo Real y Filtros**:
    - Búsqueda instantánea por texto (títulos, resúmenes, autores, etiquetas).
    - Filtros por categorías (`Artículos`, `Noticias`, `Recursos`, `Cursos`, `Repositorios`).
@@ -30,8 +30,8 @@ Espacio didáctico y colaborativo creado como recurso de aprendizaje para el alu
 5. **Diseño Moderno de Ciberseguridad**:
    - Tema oscuro por defecto con soporte para modo claro persistente en `localStorage`.
    - Paleta tecnológica con acentos cian y violeta neón, componentes *glassmorphism* y diseño 100% responsivo.
-6. **Despliegue Automático en GitHub Pages**:
-   - Flujo de trabajo de GitHub Actions en `.github/workflows/deploy.yml` que publica los cambios en cuanto se aprueban las PRs en la rama `main`.
+6. **Despliegue y Compilación Automática en GitHub Pages**:
+   - Flujo de trabajo de GitHub Actions en `.github/workflows/deploy.yml` que ejecuta `node scripts/build.js` y publica los cambios en cuanto se aprueban las PRs en la rama `main`.
 
 ---
 
@@ -41,7 +41,7 @@ Espacio didáctico y colaborativo creado como recurso de aprendizaje para el alu
 cibercelia/
 ├── .github/
 │   ├── workflows/
-│   │   └── deploy.yml              # Despliegue automatizado en GitHub Pages
+│   │   └── deploy.yml              # Compilación SSG y despliegue en GitHub Pages
 │   ├── PULL_REQUEST_TEMPLATE.md    # Plantilla con checklist para PRs del alumnado
 │   └── ISSUE_TEMPLATE/             # Plantillas para proponer posts y recursos
 ├── assets/
@@ -49,20 +49,24 @@ cibercelia/
 │   │   ├── style.css               # Sistema de diseño, temas claro/oscuro y componentes
 │   │   └── prism.css               # Tema de sintaxis de código
 │   ├── js/
-│   │   ├── app.js                  # Lógica de búsqueda, filtros, tema y navegación
-│   │   ├── content.js              # Manifiesto de contenidos y motor Markdown
+│   │   ├── app.js                  # Lógica de búsqueda, filtros y tema
+│   │   ├── content.js              # Manifiesto de contenidos generado
+│   │   ├── marked.min.js           # Parser Markdown oficial para SSG y cliente
 │   │   └── prism.js                # Resaltador de sintaxis ligero
 │   └── images/
 │       ├── logo.svg                # Logotipo en vector SVG
 │       └── favicon.svg             # Favicon
 ├── content/
-│   ├── posts/                      # Artículos técnicos en Markdown
-│   ├── noticias/                   # Avisos y noticias de ciberseguridad
-│   ├── recursos/                   # Catálogo de herramientas y laboratorios
-│   ├── cursos/                     # Cursos y certificaciones recomendadas
-│   └── proyectos/                  # Repositorios de la organización
+│   ├── posts/                      # Artículos técnicos en Markdown (.md)
+│   ├── noticias/                   # Avisos y noticias de ciberseguridad (.md)
+│   ├── recursos/                   # Catálogo de herramientas y laboratorios (.json)
+│   ├── cursos/                     # Cursos y certificaciones recomendadas (.json)
+│   └── proyectos/                  # Repositorios de la organización (.json)
+├── posts/                          # Páginas HTML estáticas generadas (/posts/<id>/)
+├── noticias/                       # Páginas HTML estáticas generadas (/noticias/<id>/)
+├── scripts/
+│   └── build.js                    # Compilador de Markdown a HTML estático (SSG)
 ├── index.html                      # Portal principal
-├── post.html                       # Visor completo e independiente de artículos
 ├── CONTRIBUTING.md                  # Guía paso a paso para estudiantes
 └── README.md                       # Documentación del proyecto
 ```
