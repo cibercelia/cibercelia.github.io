@@ -5,7 +5,12 @@
     "category": "curso",
     "url": "https://roadmap.sh/cyber-security",
     "summary": "Mapa de ruta interactivo con los conocimientos fundamentales y avanzados para orientar tu carrera en ciberseguridad.",
-    "tags": ["roadmap", "carrera", "fundamentos", "gratis"],
+    "tags": [
+      "roadmap",
+      "carrera",
+      "fundamentos",
+      "gratis"
+    ],
     "provider": "roadmap.sh",
     "level": "Todos los niveles",
     "type": "Ruta de aprendizaje",
@@ -17,23 +22,16 @@
     "category": "curso",
     "url": "https://www.comptia.org/certifications/security",
     "summary": "Certificación internacional de referencia que valida las habilidades básicas necesarias para desempeñar funciones clave de seguridad.",
-    "tags": ["certificacion", "comptia", "seguridad", "entry-level"],
+    "tags": [
+      "certificacion",
+      "comptia",
+      "seguridad",
+      "entry-level"
+    ],
     "provider": "CompTIA",
     "level": "Intermedio",
     "type": "Certificación oficial",
     "date": "2026-10-01"
-  },
-  {
-    "id": "cert-ejpt",
-    "title": "eLearnSecurity Junior Penetration Tester (eJPT)",
-    "category": "curso",
-    "url": "https://ine.com/certifications/ejpt-certification",
-    "summary": "Certificación 100% práctica de iniciación al pentesting en redes, evaluación de vulnerabilidades y explotación web.",
-    "tags": ["certificacion", "pentesting", "redteam", "practico"],
-    "provider": "INE Security",
-    "level": "Junior / Práctico",
-    "type": "Certificación práctica",
-    "date": "2026-09-20"
   },
   {
     "id": "curso-cisco-skillsforall",
@@ -41,7 +39,12 @@
     "category": "curso",
     "url": "https://skillsforall.com/",
     "summary": "Cursos oficiales gratuitos de Cisco Networking Academy sobre defensa de redes, respuesta a incidentes y conceptos clave.",
-    "tags": ["cisco", "redes", "gratis", "certificacion-insignia"],
+    "tags": [
+      "cisco",
+      "redes",
+      "gratis",
+      "certificacion-insignia"
+    ],
     "provider": "Cisco",
     "level": "Iniciación",
     "type": "Curso gratuito",
@@ -51,9 +54,15 @@
     "id": "curso-google-cybersecurity",
     "title": "Certificado profesional de ciberseguridad de Google",
     "category": "curso",
-    "url": "https://grow.google/certificates/cybersecurity/",
+    "url": "https://crece.withgoogle.com/certificados/ciberseguridad/",
     "summary": "Formación enfocada a analistas SOC: SIEM (Chronicle/Splunk), Python para seguridad, Linux y detección de intrusiones.",
-    "tags": ["google", "soc", "siem", "python", "blueteam"],
+    "tags": [
+      "google",
+      "soc",
+      "siem",
+      "python",
+      "blueteam"
+    ],
     "provider": "Google / Coursera",
     "level": "Iniciación / Intermedio",
     "type": "Certificado profesional",
