@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Render Card Template (Direct full page link for posts/news)
   function renderCard(item) {
     const isMarkdownArticle = item.category === 'post' || item.category === 'noticia';
-    const articleHref = `post.html?id=${encodeURIComponent(item.id)}`;
+    const articleHref = item.permalink ? item.permalink : (item.category === 'post' ? `posts/${item.id}/` : `noticias/${item.id}/`);
     const hasExternalUrl = !!item.url;
     
     let actionBtnHtml = '';

