@@ -41,7 +41,7 @@
   --radius-lg: 20px;
   --radius-full: 9999px;
   --container-max: 1200px;
-  --article-max: 860px;
+  --article-max: 960px;
   --header-height: 72px;
 
   /* Shadows & Glassmorphism */
@@ -1134,10 +1134,12 @@ code, pre {
 
 .markdown-body table, .styled-table {
   width: 100%;
+  min-width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   margin: 0;
+  table-layout: auto;
 }
 
 .markdown-body th, .styled-table th {
@@ -1145,22 +1147,25 @@ code, pre {
   color: var(--accent-cyan);
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 1rem 1.25rem;
+  letter-spacing: 0.04em;
+  padding: 0.85rem 0.9rem;
   border: none;
   border-bottom: 2px solid var(--border-color);
-  white-space: nowrap;
+  white-space: normal;
+  text-wrap: balance;
+  vertical-align: middle;
+  line-height: 1.35;
 }
 
 .markdown-body td, .styled-table td {
-  padding: 1rem 1.25rem;
+  padding: 0.85rem 0.9rem;
   border: none;
   border-bottom: 1px solid var(--border-color);
   color: var(--text-primary);
   vertical-align: middle;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .markdown-body tbody tr:last-child td, .styled-table tbody tr:last-child td {
@@ -1185,12 +1190,14 @@ code, pre {
 .status-pill {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.35rem;
-  padding: 0.25rem 0.65rem;
+  padding: 0.22rem 0.6rem;
   border-radius: var(--radius-full);
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   font-weight: 600;
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 .status-pill.status-low, .status-pill.status-danger {
@@ -1395,6 +1402,18 @@ code, pre {
 }
 
 @media (max-width: 768px) {
+  .article-card-main {
+    padding: 1.5rem 1rem;
+  }
+  .markdown-body th, .styled-table th,
+  .markdown-body td, .styled-table td {
+    padding: 0.65rem 0.5rem;
+    font-size: 0.8rem;
+  }
+  .status-pill {
+    padding: 0.15rem 0.45rem;
+    font-size: 0.72rem;
+  }
   .nav-links {
     display: none;
   }
