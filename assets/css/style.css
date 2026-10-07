@@ -1146,7 +1146,7 @@ code, pre {
 
 /* Article Page Bottom Callout */
 .article-contrib-callout {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.8));
+  background: var(--bg-card);
   border: 1px dashed var(--border-color-hover);
   border-radius: var(--radius-md);
   padding: 1.5rem 1.75rem;
@@ -1155,10 +1155,12 @@ code, pre {
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .article-contrib-text h4 {
   font-size: 1.05rem;
+  color: var(--text-primary);
   margin-bottom: 0.3rem;
 }
 

@@ -471,7 +471,7 @@ La directiva **NIS2 (Directiva UE 2022/2555)** amplía notablemente el alcance d
   ]
 };
 
-// Markdown Parser Engine
+// Markdown Parser Engine using marked.js with GFM & custom callouts
 const MarkdownEngine = {
   // Strip frontmatter if present
   stripFrontmatter(md) {
@@ -487,23 +487,8 @@ const MarkdownEngine = {
   // Parse Markdown to HTML
   render(md) {
     let raw = this.stripFrontmatter(md);
-    
-    // Escape HTML entities inside inline code first
-    const codeBlocks = [];
-    raw = raw.replace(/```([\w-]+)?\n([\s\S]*?)```/g, (match, lang, code) => {
-      const id = `__CODE_BLOCK_${codeBlocks.length}__`;
-      codeBlocks.push({ lang: lang || 'text', code: code.trim() });
-      return id;
-    });
 
-    const inlineCodes = [];
-    raw = raw.replace(/`([^`]+)`/g, (match, code) => {
-      const id = `__INLINE_CODE_${inlineCodes.length}__`;
-      inlineCodes.push(code);
-      return id;
-    });
-
-    // Alert Callouts: > [!NOTE], > [!IMPORTANT], > [!WARNING], > [!TIP], > [!CAUTION]
+    // Process GitHub Callouts / Alerts (> [!NOTE], > [!IMPORTANT], > [!WARNING], > [!TIP], > [!CAUTION])
     raw = raw.replace(/^>\s*\[!(NOTE|IMPORTANT|WARNING|TIP|CAUTION)\]\s*\n((?:>.*\n?)*)/gim, (match, type, content) => {
       const cleanContent = content.replace(/^>\s?/gm, '').trim();
       const typeLower = type.toLowerCase();
@@ -514,109 +499,47 @@ const MarkdownEngine = {
         tip: 'Consejo',
         caution: 'Precaución'
       };
+      const innerHtml = typeof marked !== 'undefined' ? marked.parse(cleanContent) : cleanContent;
       return `<div class="callout callout-${typeLower}">
         <div class="callout-title"><strong>${titles[typeLower] || type}</strong></div>
-        <div class="callout-body">${this.renderInline(cleanContent)}</div>
-      </div>\n`;
+        <div class="callout-body">${innerHtml}</div>
+      </div>\n\n`;
     });
 
-    // Standard blockquotes
-    raw = raw.replace(/^>\s?(.*)$/gm, '<blockquote>$1</blockquote>');
-    raw = raw.replace(/<\/blockquote>\n<blockquote>/g, '<br>');
-
-    // Headers
-    raw = raw.replace(/^### (.*$)/gim, '<h3>$1</h3>');
-    raw = raw.replace(/^## (.*$)/gim, '<h2>$1</h2>');
-    raw = raw.replace(/^# (.*$)/gim, '<h1>$1</h1>');
-
-    // Horizontal Rules
-    raw = raw.replace(/^(?:---|\*\*\*|___)\s*$/gm, '<hr>');
-
-    // Tables
-    raw = raw.replace(/^(\|.+|\n\|.+)+/gm, (tableMatch) => {
-      const lines = tableMatch.trim().split('\n').filter(l => l.trim().length > 0);
-      if (lines.length < 2) return tableMatch;
-
-      let html = '<div class="table-container"><table>';
-      const headerCols = lines[0].split('|').slice(1, -1).map(c => c.trim());
-      
-      html += '<thead><tr>';
-      headerCols.forEach(col => {
-        html += `<th>${this.renderInline(col)}</th>`;
+    let html = '';
+    if (typeof marked !== 'undefined') {
+      marked.setOptions({
+        gfm: true,
+        breaks: false
       });
-      html += '</tr></thead><tbody>';
+      html = marked.parse(raw);
+    } else {
+      html = raw;
+    }
 
-      const startIndex = lines[1].includes('---') ? 2 : 1;
-      for (let i = startIndex; i < lines.length; i++) {
-        const rowCols = lines[i].split('|').slice(1, -1).map(c => c.trim());
-        html += '<tr>';
-        rowCols.forEach(col => {
-          html += `<td>${this.renderInline(col)}</td>`;
-        });
-        html += '</tr>';
-      }
-      html += '</tbody></table></div>';
-      return html;
-    });
-
-    // Unordered Lists
-    raw = raw.replace(/^\s*[-*+]\s+(.*)$/gm, '<ul><li>$1</li></ul>');
-    raw = raw.replace(/<\/ul>\n<ul>/g, '');
-
-    // Ordered Lists
-    raw = raw.replace(/^\s*\d+\.\s+(.*)$/gm, '<ol><li>$1</ol>');
-    raw = raw.replace(/<\/ol>\n<ol>/g, '');
-
-    // Paragraphs
-    const lines = raw.split('\n\n');
-    raw = lines.map(block => {
-      block = block.trim();
-      if (!block) return '';
-      if (/^<(\/)?(h1|h2|h3|h4|ul|ol|li|blockquote|div|table|hr|pre)/.test(block) || block.startsWith('__CODE_BLOCK_')) {
-        return block;
-      }
-      return `<p>${this.renderInline(block)}</p>`;
-    }).join('\n\n');
-
-    // Restore inline code
-    inlineCodes.forEach((code, idx) => {
-      const escaped = code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-      raw = raw.replace(`__INLINE_CODE_${idx}__`, `<code>${escaped}</code>`);
-    });
-
-    // Restore code blocks with Syntax Highlighting & Copy Button
-    codeBlocks.forEach((block, idx) => {
-      const escaped = block.code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-      const codeHtml = `<div class="code-wrapper" style="position: relative;">
+    // Enhance code blocks with copy button
+    html = html.replace(/<pre><code class="language-([\w-]+)">([\s\S]*?)<\/code><\/pre>/g, (match, lang, code) => {
+      return `<div class="code-wrapper" style="position: relative;">
         <button class="code-copy-btn" onclick="copyCodeSnippet(this)">Copiar</button>
-        <pre class="language-${block.lang}"><code class="language-${block.lang}">${escaped}</code></pre>
+        <pre class="language-${lang}"><code class="language-${lang}">${code}</code></pre>
       </div>`;
-      raw = raw.replace(`__CODE_BLOCK_${idx}__`, codeHtml);
     });
 
-    return raw;
-  },
+    html = html.replace(/<pre><code>([\s\S]*?)<\/code><\/pre>/g, (match, code) => {
+      return `<div class="code-wrapper" style="position: relative;">
+        <button class="code-copy-btn" onclick="copyCodeSnippet(this)">Copiar</button>
+        <pre class="language-text"><code class="language-text">${code}</code></pre>
+      </div>`;
+    });
 
-  renderInline(text) {
-    // Images: ![alt](url)
-    text = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="img-fluid" loading="lazy">');
-    // Links: [text](url)
-    text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
-    // Bold: **text**
-    text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    text = text.replace(/__(.*?)__/g, '<strong>$1</strong>');
-    // Italic: *text*
-    text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
-    text = text.replace(/_([^_]+)_/g, '<em>$1</em>');
-    // Strikethrough: ~~text~~
-    text = text.replace(/~~(.*?)~~/g, '<del>$1</del>');
-    return text;
+    return html;
   }
 };
 
 // Global helper for code snippet copy
 window.copyCodeSnippet = function(btn) {
-  const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+  const pre = btn.parentElement ? btn.parentElement.querySelector('pre code') : null;
+  const code = pre ? pre.innerText : (btn.nextElementSibling ? btn.nextElementSibling.innerText : '');
   navigator.clipboard.writeText(code).then(() => {
     const originalText = btn.innerText;
     btn.innerText = '¡Copiado!';
