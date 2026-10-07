@@ -271,23 +271,6 @@ const CIBERCELIA_CONTENT = {
       "date": "2026-10-01"
     },
     {
-      "id": "cert-ejpt",
-      "title": "eLearnSecurity Junior Penetration Tester (eJPT)",
-      "category": "curso",
-      "url": "https://ine.com/certifications/ejpt-certification",
-      "summary": "Certificación 100% práctica de iniciación al pentesting en redes, evaluación de vulnerabilidades y explotación web.",
-      "tags": [
-        "certificacion",
-        "pentesting",
-        "redteam",
-        "practico"
-      ],
-      "provider": "INE Security",
-      "level": "Junior / Práctico",
-      "type": "Certificación práctica",
-      "date": "2026-09-20"
-    },
-    {
       "id": "curso-cisco-skillsforall",
       "title": "Cisco Skills for All: fundamentos de ciberseguridad",
       "category": "curso",
@@ -308,7 +291,7 @@ const CIBERCELIA_CONTENT = {
       "id": "curso-google-cybersecurity",
       "title": "Certificado profesional de ciberseguridad de Google",
       "category": "curso",
-      "url": "https://grow.google/certificates/cybersecurity/",
+      "url": "https://crece.withgoogle.com/certificados/ciberseguridad/",
       "summary": "Formación enfocada a analistas SOC: SIEM (Chronicle/Splunk), Python para seguridad, Linux y detección de intrusiones.",
       "tags": [
         "google",
@@ -336,23 +319,6 @@ const CIBERCELIA_CONTENT = {
         "docs-as-code",
         "mkdocs",
         "colaborativo"
-      ],
-      "badge": "Repositorio",
-      "stars": "GitHub Repo",
-      "date": "2026-10-01"
-    },
-    {
-      "id": "proj-cibercelia-web",
-      "title": "Portal CiberCelia",
-      "category": "proyecto",
-      "url": "https://cibercelia.github.io/",
-      "github_url": "https://github.com/cibercelia/cibercelia.github.io",
-      "summary": "Repositorio del portal web: centraliza artículos técnicos, enlaces seleccionados, avisos y proyectos del curso de especialización.",
-      "tags": [
-        "portal",
-        "github-pages",
-        "articulos",
-        "recursos"
       ],
       "badge": "Repositorio",
       "stars": "GitHub Repo",

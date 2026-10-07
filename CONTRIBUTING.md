@@ -165,5 +165,6 @@ Para profundizar en este concepto, consulta el término [MFA en el glosario](htt
   ```
 - **Diagramas y esquemas**: Utiliza diagramas en texto o tablas para clarificar flujos de ataque o arquitecturas defensivas.
 - **Ética y legalidad**: Todo el contenido debe orientarse a fines educativos, éticos y de defensa en entornos de laboratorio autorizados.
+- **Licencia de contribución**: Al enviar una Pull Request con contenido didáctico (artículos, guías, noticias), aceptas que tu aportación se publique bajo la licencia [Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es), reconociéndose siempre tu autoría.
 
 ¡Muchas gracias por colaborar en hacer crecer **CiberCelia**! 🚀

@@ -88,3 +88,12 @@ python3 -m http.server 8000
 ## 🤝 ¿Cómo colaborar?
 
 Consulta la [Guía de contribución (CONTRIBUTING.md)](CONTRIBUTING.md) para ver los pasos detallados de bifurcación (Fork), creación de ramas y envío de Pull Requests.
+
+---
+
+## 📄 Licencias
+
+Este proyecto utiliza un esquema de **doble licencia**:
+- **Código fuente y software** (HTML, CSS, JS, scripts): [Licencia MIT](LICENSE.md).
+- **Contenidos educativos y documentación** (artículos, guías, noticias, glosario): [Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+
