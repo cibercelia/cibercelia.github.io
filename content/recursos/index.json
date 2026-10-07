@@ -1,0 +1,90 @@
+[
+  {
+    "id": "rec-portswigger",
+    "title": "PortSwigger Web Security Academy",
+    "category": "recurso",
+    "url": "https://portswigger.net/web-security",
+    "summary": "Laboratorios y formación gratuita de máxima calidad sobre vulnerabilidades web (SQLi, XSS, CSRF, SSRF, JWT, OAuth).",
+    "tags": ["web", "laboratorio", "burpsuite", "gratis", "pentesting"],
+    "badge": "Recomendado",
+    "author": "CiberCelia",
+    "date": "2026-10-01"
+  },
+  {
+    "id": "rec-hackthebox",
+    "title": "Hack The Box (HTB)",
+    "category": "recurso",
+    "url": "https://www.hackthebox.com/",
+    "summary": "Plataforma gamificada con máquinas virtuales activas y retiradas para practicar pentesting, privilege escalation y Active Directory.",
+    "tags": ["laboratorio", "pentesting", "redteam", "active-directory"],
+    "badge": "Popular",
+    "author": "CiberCelia",
+    "date": "2026-10-01"
+  },
+  {
+    "id": "rec-tryhackme",
+    "title": "TryHackMe (THM)",
+    "category": "recurso",
+    "url": "https://tryhackme.com/",
+    "summary": "Salas guiadas paso a paso ideales para iniciarse en ciberseguridad, redes, Linux, Windows y herramientas ofensivas.",
+    "tags": ["principiantes", "laboratorio", "redteam", "blueteam"],
+    "badge": "Esencial",
+    "author": "CiberCelia",
+    "date": "2026-10-01"
+  },
+  {
+    "id": "rec-gtfobins",
+    "title": "GTFOBins - Unix Binaries Escalation",
+    "category": "recurso",
+    "url": "https://gtfobins.github.io/",
+    "summary": "Catálogo seleccionado de binarios de Unix para eludir restricciones de seguridad locales en sistemas mal configurados (SUID, Sudo).",
+    "tags": ["linux", "privilege-escalation", "cheatsheet", "redteam"],
+    "badge": "Herramienta",
+    "author": "CiberCelia",
+    "date": "2026-09-25"
+  },
+  {
+    "id": "rec-cyberchef",
+    "title": "CyberChef - The Cyber Swiss Army Knife",
+    "category": "recurso",
+    "url": "https://gchq.github.io/CyberChef/",
+    "summary": "Aplicación web desarrollada por GCHQ para codificar, decodificar, cifrar, analizar datos binarios y realizar desofuscaciones.",
+    "tags": ["forense", "criptografia", "herramienta", "analisis"],
+    "badge": "Web App",
+    "author": "CiberCelia",
+    "date": "2026-09-20"
+  },
+  {
+    "id": "rec-mitre-attack",
+    "title": "MITRE ATT&CK Matrix",
+    "category": "recurso",
+    "url": "https://attack.mitre.org/",
+    "summary": "Base de conocimiento global de tácticas, técnicas y procedimientos (TTPs) de adversarios basada en observaciones del mundo real.",
+    "tags": ["framework", "ttps", "blueteam", "threat-intel"],
+    "badge": "Estándar",
+    "author": "CiberCelia",
+    "date": "2026-09-15"
+  },
+  {
+    "id": "rec-owasp-top-10",
+    "title": "OWASP Top 10 Web Application Security Risks",
+    "category": "recurso",
+    "url": "https://owasp.org/www-project-top-ten/",
+    "summary": "Documento de concienciación sobre los riesgos de seguridad más críticos para aplicaciones web.",
+    "tags": ["owasp", "web", "estandar", "appsec"],
+    "badge": "Oficial",
+    "author": "CiberCelia",
+    "date": "2026-09-10"
+  },
+  {
+    "id": "rec-incibe-guias",
+    "title": "INCIBE-CERT Guías y Avisos de Seguridad",
+    "category": "recurso",
+    "url": "https://www.incibe.es/incibe-cert",
+    "summary": "Centro de respuesta ante incidentes nacional para ciudadanos y empresas en España: avisos, guías y alertas de ciberseguridad.",
+    "tags": ["incibe", "cert", "alertas", "guias", "espana"],
+    "badge": "Nacional",
+    "author": "CiberCelia",
+    "date": "2026-09-05"
+  }
+]

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artículo - CiberCelia | IES Celia Viñas</title>
+  <meta name="description" content="Artículo técnico de ciberseguridad publicado por el alumnado del IES Celia Viñas.">
+  
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/prism.css">
+  <style>
+    .article-container {
+      max-width: 860px;
+      margin: 2.5rem auto 4rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      backdrop-filter: var(--backdrop-blur);
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/images/logo.svg" alt="CiberCelia Shield" class="brand-logo" width="38" height="38">
+        <div class="brand-text">
+          <span class="brand-title">CiberCelia</span>
+          <span class="brand-subtitle">IES Celia Viñas</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html#hub" class="nav-link">Hub</a></li>
+        <li><a href="https://cibercelia.github.io/glosario/" target="_blank" rel="noopener noreferrer" class="btn-glosario">📖 Ir al Glosario</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="btn-icon" aria-label="Cambiar tema">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Article Body -->
+  <main class="container">
+    <article class="article-container">
+      <a href="index.html" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        <span>Volver a CiberCelia Hub</span>
+      </a>
+
+      <div class="article-header">
+        <span id="post-category" class="category-tag post">POST</span>
+        <h1 id="post-title" style="margin-top: 0.5rem; font-size: 2.2rem;">Cargando artículo...</h1>
+        <div id="post-meta" class="card-meta" style="margin-top: 0.75rem; font-size: 0.85rem;"></div>
+      </div>
+
+      <div id="post-content" class="markdown-body">
+        <!-- Rendered Markdown -->
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container" style="text-align: center;">
+      <p>© 2026 CiberCelia • IES Celia Viñas • <a href="https://cibercelia.github.io/glosario/" target="_blank">Glosario de Ciberseguridad</a></p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/prism.js"></script>
+  <script src="assets/js/content.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Theme
+      const savedTheme = localStorage.getItem('cibercelia-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+
+      const params = new URLSearchParams(window.location.search);
+      const postId = params.get('id');
+
+      const all = [];
+      if (CIBERCELIA_CONTENT.posts) all.push(...CIBERCELIA_CONTENT.posts);
+      if (CIBERCELIA_CONTENT.noticias) all.push(...CIBERCELIA_CONTENT.noticias);
+
+      const item = all.find(p => p.id === postId) || all[0];
+
+      if (item) {
+        document.title = `${item.title} - CiberCelia`;
+        document.getElementById('post-title').textContent = item.title;
+        document.getElementById('post-category').textContent = item.category.toUpperCase();
+        document.getElementById('post-category').className = `category-tag ${item.category}`;
+        document.getElementById('post-meta').innerHTML = `
+          <span>Por <strong>${item.author || 'CiberCelia'}</strong></span>
+          ${item.author_github ? `<a href="https://github.com/${item.author_github}" target="_blank" class="nav-badge" style="margin-left: 0.5rem;">@${item.author_github}</a>` : ''}
+          <span style="margin: 0 0.5rem;">•</span>
+          <span>${item.date || ''}</span>
+          ${item.readingTime ? `<span style="margin: 0 0.5rem;">•</span><span>Lectura: ${item.readingTime}</span>` : ''}
+        `;
+        const html = MarkdownEngine.render(item.content || item.summary);
+        document.getElementById('post-content').innerHTML = html;
+        if (window.Prism) {
+          Prism.highlightAllUnder(document.getElementById('post-content'));
+        }
+      }
+    });
+  </script>
+</body>
+</html>

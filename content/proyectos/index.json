@@ -1,0 +1,38 @@
+[
+  {
+    "id": "proj-glosario",
+    "title": "Glosario Colaborativo de Ciberseguridad",
+    "category": "proyecto",
+    "url": "https://cibercelia.github.io/glosario/",
+    "github_url": "https://github.com/cibercelia/glosario",
+    "summary": "Diccionario y repositorio colaborativo de términos y conceptos de seguridad creado por el alumnado mediante Docs-as-Code (MkDocs Material).",
+    "tags": ["glosario", "docs-as-code", "mkdocs", "colaborativo", "iesceliavinas"],
+    "badge": "Destacado",
+    "stars": "GitHub Repo",
+    "date": "2026-10-01"
+  },
+  {
+    "id": "proj-cibercelia-web",
+    "title": "CiberCelia Portal Hub",
+    "category": "proyecto",
+    "url": "https://cibercelia.github.io/",
+    "github_url": "https://github.com/cibercelia/cibercelia",
+    "summary": "Portal principal de la organización: repositorio central de artículos técnicos, enlaces, noticias de interés y recursos del curso.",
+    "tags": ["portal", "github-pages", "articulos", "recursos"],
+    "badge": "Principal",
+    "stars": "GitHub Repo",
+    "date": "2026-10-01"
+  },
+  {
+    "id": "proj-ctf-writeups",
+    "title": "CiberCelia CTF Writeups",
+    "category": "proyecto",
+    "url": "https://github.com/cibercelia",
+    "github_url": "https://github.com/cibercelia",
+    "summary": "Colección de soluciones documentadas paso a paso de retos CTF, máquinas de HTB/THM y ejercicios de laboratorio.",
+    "tags": ["ctf", "writeups", "redteam", "forense", "cripto"],
+    "badge": "Laboratorio",
+    "stars": "En desarrollo",
+    "date": "2026-09-20"
+  }
+]
