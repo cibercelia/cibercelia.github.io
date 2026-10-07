@@ -1,0 +1,123 @@
+<script src="{{relative_root}}assets/js/prism.js"></script>
+<script src="{{relative_root}}assets/js/mermaid.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    let currentTheme = localStorage.getItem('cibercelia-theme') || 'dark';
+
+    function initMermaid(theme) {
+      if (!window.mermaid) return;
+      const isDark = theme === 'dark';
+      try {
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: isDark ? 'dark' : 'default',
+          themeVariables: isDark ? {
+            darkMode: true,
+            background: '#111827',
+            primaryColor: '#1e293b',
+            primaryTextColor: '#f8fafc',
+            primaryBorderColor: '#00f0ff',
+            lineColor: '#00f0ff',
+            secondaryColor: '#334155',
+            tertiaryColor: '#0f172a',
+            noteBkgColor: '#1e293b',
+            noteTextColor: '#f8fafc',
+            noteBorderColor: '#00f0ff',
+            actorBkg: '#1e293b',
+            actorTextColor: '#f8fafc',
+            actorBorder: '#00f0ff',
+            signalColor: '#00f0ff',
+            signalTextColor: '#f8fafc',
+            labelBoxBkgColor: '#1e293b',
+            labelBoxBorderColor: '#00f0ff',
+            labelTextColor: '#f8fafc',
+            loopTextColor: '#f8fafc'
+          } : {
+            darkMode: false,
+            background: '#ffffff',
+            primaryColor: '#f0f9ff',
+            primaryTextColor: '#0f172a',
+            primaryBorderColor: '#0284c7',
+            lineColor: '#0284c7',
+            secondaryColor: '#f1f5f9',
+            tertiaryColor: '#ffffff',
+            noteBkgColor: '#f8fafc',
+            noteTextColor: '#0f172a',
+            noteBorderColor: '#0284c7',
+            actorBkg: '#f0f9ff',
+            actorTextColor: '#0f172a',
+            actorBorder: '#0284c7',
+            signalColor: '#0284c7',
+            signalTextColor: '#0f172a',
+            labelBoxBkgColor: '#f0f9ff',
+            labelBoxBorderColor: '#0284c7',
+            labelTextColor: '#0f172a',
+            loopTextColor: '#0f172a'
+          },
+          fontFamily: 'Inter, sans-serif'
+        });
+        mermaid.run({ querySelector: '.mermaid' });
+      } catch (e) {
+        console.error('Error al inicializar diagrama Mermaid:', e);
+      }
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('cibercelia-theme', theme);
+      if (themeToggleBtn) {
+        themeToggleBtn.innerHTML = theme === 'dark'
+          ? `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`
+          : `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+      }
+    }
+
+    applyTheme(currentTheme);
+    initMermaid(currentTheme);
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        applyTheme(currentTheme);
+        // Recargar para recalcular estilos del renderizado vectorial SVG de Mermaid
+        window.location.reload();
+      });
+    }
+
+    if (window.Prism) {
+      Prism.highlightAll();
+    }
+  });
+
+  window.copyCodeSnippet = function(btn) {
+    const pre = btn.parentElement ? btn.parentElement.querySelector('pre code') : null;
+    const code = pre ? pre.innerText : (btn.nextElementSibling ? btn.nextElementSibling.innerText : '');
+    navigator.clipboard.writeText(code).then(() => {
+      const originalText = btn.innerText;
+      btn.innerText = '¡Copiado!';
+      btn.style.borderColor = '#10b981';
+      btn.style.color = '#10b981';
+      setTimeout(() => {
+        btn.innerText = originalText;
+        btn.style.borderColor = '';
+        btn.style.color = '';
+      }, 2000);
+    });
+  };
+
+  window.copyArticleUrl = function(btn) {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const span = btn.querySelector('span');
+      const orig = span ? span.innerText : '';
+      if (span) span.innerText = '¡Copiado!';
+      btn.style.borderColor = '#10b981';
+      btn.style.color = '#10b981';
+      setTimeout(() => {
+        if (span) span.innerText = orig;
+        btn.style.borderColor = '';
+        btn.style.color = '';
+      }, 2000);
+    });
+  };
+</script>

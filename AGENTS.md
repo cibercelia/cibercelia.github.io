@@ -32,13 +32,15 @@ Cualquier agente de IA que genere contenido, modifique código o revise contribu
 ---
 
 ## 4. Arquitectura Docs-as-Code y Generador Estático (SSG)
-- **Estructura de contenidos**:
+- **Estructura de contenidos y plantillas**:
   - Artículos técnicos: `content/posts/<slug>.md`
   - Avisos y noticias: `content/noticias/<slug>.md`
   - Enlaces y herramientas: `content/recursos/index.json`
   - Cursos y certificaciones: `content/cursos/index.json`
   - Repositorios de la organización: `content/proyectos/index.json`
-- **Exclusión de archivos HTML compilados en Git**: Las carpetas generadas `posts/`, `noticias/`, `assets/data/` y `assets/js/content.js` están incluidas en `.gitignore`. El repositorio almacena únicamente los archivos `.md` y fuentes.
+  - Plantillas desacopladas: `templates/article.html` y `templates/partials/*.html`
+- **Plantillas HTML independientes**: Las plantillas NUNCA deben estar incrustadas como cadenas en el código JavaScript. Deben residir como archivos `.html` independientes y limpios dentro de `templates/` utilizando etiquetas `{{variable}}` y `{{> partial}}`.
+- **Exclusión de archivos HTML compilados en Git**: Las carpetas generadas `posts/`, `noticias/`, `assets/data/` y `assets/js/content.js` están incluidas en `.gitignore`. El repositorio almacena únicamente los archivos `.md`, fuentes y plantillas.
 - **Compilación automática en GitHub Pages**: En cada *push* o integración a `main`, GitHub Actions ejecuta `node scripts/build.js` y publica las páginas renderizadas directamente en GitHub Pages.
 - **Validación local obligatoria**: En desarrollo local o antes de enviar una PR/commit, se **DEBE ejecutar el compilador SSG** (`node scripts/build.js`) para verificar que no existan errores de compilación antes de subir los cambios Markdown.
 - **Páginas HTML estáticas e independientes**:

@@ -61,15 +61,18 @@ cibercelia/
 │   ├── recursos/                   # Catálogo de herramientas y laboratorios (.json)
 │   ├── cursos/                     # Cursos y certificaciones recomendadas (.json)
 │   └── proyectos/                  # Repositorios de la organización (.json)
+├── templates/
+│   ├── article.html                # Plantilla HTML para artículos y noticias
+│   └── partials/                   # Componentes HTML reutilizables (head, header, footer, scripts)
 ├── scripts/
-│   └── build.js                    # Compilador de Markdown a HTML estático (SSG)
+│   └── build.js                    # Compilador SSG con motor de plantillas desacoplado
 ├── index.html                      # Portal principal
 ├── CONTRIBUTING.md                  # Guía paso a paso para estudiantes
 ├── LICENSE.md                      # Licencia dual (MIT para código, CC BY-SA para contenidos)
 └── README.md                       # Documentación del proyecto
 ```
 
-> **Nota:** El repositorio almacena únicamente los archivos fuente y el contenido en Markdown (`.md`). Al hacer *push* o fusionar una PR en `main`, **GitHub Actions** ejecuta automáticamente `node scripts/build.js` y genera las páginas `.html` (`/posts/<slug>/` y `/noticias/<slug>/`) que se publican en **GitHub Pages**.
+> **Nota:** El repositorio almacena únicamente los archivos fuente, plantillas y el contenido en Markdown (`.md`). Al hacer *push* o fusionar una PR en `main`, **GitHub Actions** ejecuta automáticamente `node scripts/build.js` y genera las páginas `.html` (`/posts/<slug>/` y `/noticias/<slug>/`) que se publican en **GitHub Pages**.
 
 ---
 

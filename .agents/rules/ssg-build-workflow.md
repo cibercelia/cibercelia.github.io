@@ -3,6 +3,7 @@ description: Requisitos y flujo de compilación SSG para CiberCelia
 globs:
   - "scripts/**"
   - "content/**"
+  - "templates/**"
   - ".github/workflows/**"
 ---
 
@@ -28,3 +29,7 @@ El comando `node scripts/build.js` genera:
 ## 3. URLs Limpias y Sin Modales
 - Toda publicación debe ser accesible mediante su URL canónica limpia: `/posts/<slug>/` o `/noticias/<slug>/`.
 - Está terminantemente prohibido utilizar ventanas modales o páginas con parámetros de consulta (`post.html?id=...`) para la lectura de artículos.
+
+## 4. Plantillas Desacopladas en /templates/
+- Todas las plantillas HTML residen en `templates/` (p. ej. `templates/article.html`) y sus fragmentos en `templates/partials/*.html`.
+- NUNCA incrustar código HTML completo dentro de cadenas en `scripts/build.js`. Utilizar la sintaxis `{{variable}}` y `{{> partial}}`.

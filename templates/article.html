@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+{{> head}}
+<body>
+
+  <!-- Site Header -->
+  {{> header}}
+
+  <!-- Article Layout -->
+  <main class="container article-page-layout">
+    
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumb-nav" aria-label="Ruta de navegación">
+      <a href="{{relative_root}}index.html">Inicio</a>
+      <span class="breadcrumb-separator">/</span>
+      <a href="{{relative_root}}index.html#hub">{{category_label}}</a>
+      <span class="breadcrumb-separator">/</span>
+      <span style="color: var(--text-primary);">{{title}}</span>
+    </nav>
+
+    <!-- Main Article Card -->
+    <article class="article-card-main">
+      
+      <!-- Article Header -->
+      <header class="article-header-block">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem;">
+          <span class="category-tag {{category}}">{{badge}}</span>
+          <div class="article-actions-bar">
+            <button class="btn-article-action" onclick="copyArticleUrl(this)" title="Copiar enlace">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+              <span>Compartir</span>
+            </button>
+            <a href="{{github_edit_url}}" target="_blank" rel="noopener noreferrer" class="btn-article-action" title="Editar en GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+              <span>Editar en GitHub</span>
+            </a>
+          </div>
+        </div>
+
+        <h1 class="article-main-title">{{title}}</h1>
+
+        <div class="article-author-bar">
+          <div class="article-author-left">
+            <span class="article-author-avatar">{{author_avatar}}</span>
+            <div class="article-author-meta">
+              <h4>
+                {{author}}
+                {{#author_github}}
+                <a href="https://github.com/{{author_github}}" target="_blank" rel="noopener noreferrer" class="nav-badge" style="margin-left: 0.5rem;">@{{author_github}}</a>
+                {{/author_github}}
+              </h4>
+              <p>{{date}} • Lectura: {{reading_time}}</p>
+            </div>
+          </div>
+          <div class="card-tags" style="margin-bottom: 0;">{{tags_html}}</div>
+        </div>
+      </header>
+
+      <!-- Pre-rendered Markdown Content -->
+      <div class="markdown-body">
+        {{content}}
+      </div>
+
+      <!-- Bottom Contribution Box -->
+      {{> contrib_callout}}
+
+    </article>
+
+    <!-- Return to Hub Link -->
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="{{relative_root}}index.html#hub" class="btn-article-action" style="padding: 0.6rem 1.4rem; font-size: 0.9rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        <span>Volver a todas las publicaciones</span>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Site Footer -->
+  {{> footer}}
+
+  <!-- Scripts -->
+  {{> scripts}}
+</body>
+</html>
