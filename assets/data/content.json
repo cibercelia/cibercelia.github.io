@@ -340,8 +340,8 @@
       "id": "proj-cibercelia-web",
       "title": "Portal CiberCelia",
       "category": "proyecto",
-      "url": "https://cibercelia.github.io/cibercelia/",
-      "github_url": "https://github.com/cibercelia/cibercelia",
+      "url": "https://cibercelia.github.io/",
+      "github_url": "https://github.com/cibercelia/cibercelia.github.io",
       "summary": "Repositorio del portal web: centraliza artículos técnicos, enlaces seleccionados, avisos y proyectos del curso de especialización.",
       "tags": [
         "portal",

@@ -10,9 +10,10 @@ Espacio didáctico y colaborativo creado como recurso de aprendizaje para el alu
 
 ## 🌐 Enlaces del proyecto
 
-- **Web CiberCelia:** [https://cibercelia.github.io/cibercelia/](https://cibercelia.github.io/cibercelia/) (o [https://cibercelia.github.io/](https://cibercelia.github.io/))
+- **Web CiberCelia:** [https://cibercelia.github.io/](https://cibercelia.github.io/)
 - **Glosario colaborativo:** [https://cibercelia.github.io/glosario/](https://cibercelia.github.io/glosario/)
 - **Organización en GitHub:** [https://github.com/cibercelia](https://github.com/cibercelia)
+- **Repositorio de la web:** [https://github.com/cibercelia/cibercelia.github.io](https://github.com/cibercelia/cibercelia.github.io)
 - **Repositorio del glosario:** [https://github.com/cibercelia/glosario](https://github.com/cibercelia/glosario)
 
 ---
