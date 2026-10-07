@@ -4,8 +4,6 @@ Espacio didáctico y colaborativo creado como recurso de aprendizaje para el alu
 
 > **Nota informativa:** Este portal es un proyecto educativo independiente de apoyo a las clases y prácticas del curso.
 
-![CiberCelia Banner](assets/images/logo.svg)
-
 ---
 
 ## 🌐 Enlaces del proyecto
