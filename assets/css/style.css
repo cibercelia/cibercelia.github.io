@@ -795,17 +795,19 @@ code, pre {
 .contribute-section {
   padding: 3.5rem 0;
   margin-top: 2rem;
-  background: linear-gradient(180deg, transparent, rgba(17, 24, 39, 0.8));
+  background: transparent;
   border-top: 1px solid var(--border-color);
 }
 
 .contribute-box {
   background: var(--bg-card);
+  backdrop-filter: var(--backdrop-blur);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: 2.5rem;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-md);
 }
 
 .contribute-grid {
@@ -816,11 +818,19 @@ code, pre {
 }
 
 .step-card {
-  background: rgba(15, 23, 42, 0.6);
+  background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   padding: 1.5rem;
   position: relative;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+}
+
+.step-card:hover {
+  border-color: var(--border-color-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .step-number {
@@ -833,6 +843,8 @@ code, pre {
 
 .step-title {
   font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
@@ -845,17 +857,19 @@ code, pre {
 .step-code {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 0.4rem 0.6rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.45rem 0.7rem;
   border-radius: var(--radius-sm);
   color: var(--accent-cyan);
-  margin-top: 0.6rem;
+  margin-top: 0.75rem;
   display: block;
+  overflow-x: auto;
 }
 
 .btn-primary-glow {
   background: linear-gradient(135deg, var(--accent-cyan), #3b82f6);
-  color: #0B0F19;
+  color: #ffffff;
   font-weight: 700;
   padding: 0.75rem 1.5rem;
   border-radius: var(--radius-md);
@@ -870,7 +884,7 @@ code, pre {
 .btn-primary-glow:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 22px rgba(0, 240, 255, 0.5);
-  color: #000000;
+  color: #ffffff;
 }
 
 /* ==========================================================================
