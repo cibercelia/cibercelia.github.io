@@ -46,9 +46,10 @@ Verifica que la salida indique:
 - `⚡ JS Bundle generado: assets/js/content.js`
 
 ## Paso 4: Validar y Hacer Commit
-1. Comprueba que el archivo `posts/<slug>/index.html` contiene el HTML estático pre-renderizado.
-2. Añade los cambios y crea el commit con un mensaje descriptivo:
+1. Comprueba en tu navegador local que la página generada se visualiza correctamente.
+2. Como las carpetas `posts/`, `noticias/` y `assets/data/` están en `.gitignore`, Git únicamente registrará el nuevo archivo `.md`:
    ```bash
-   git add -A
+   git add content/posts/<slug>.md
    git commit -m "feat(posts): añadir artículo sobre <tema>"
    ```
+3. Al hacer push o aprobar la PR en `main`, **GitHub Actions** compilará el HTML automáticamente y lo desplegará en **GitHub Pages**.

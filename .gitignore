@@ -1,0 +1,19 @@
+# Compilación SSG y artefactos generados (se generan automáticamente en GitHub Pages)
+posts/
+noticias/
+assets/data/
+assets/js/content.js
+
+# Dependencias y entornos
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos del sistema y del editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo

@@ -49,8 +49,8 @@ cibercelia/
 │   │   └── prism.css               # Tema de sintaxis de código
 │   ├── js/
 │   │   ├── app.js                  # Lógica de búsqueda, filtros y tema
-│   │   ├── content.js              # Manifiesto de contenidos generado
-│   │   ├── marked.min.js           # Parser Markdown oficial para SSG y cliente
+│   │   ├── marked.min.js           # Parser Markdown para el SSG
+│   │   ├── mermaid.min.js          # Motor de diagramas vectoriales interactivos
 │   │   └── prism.js                # Resaltador de sintaxis ligero
 │   └── images/
 │       ├── logo.svg                # Logotipo en vector SVG
@@ -61,14 +61,15 @@ cibercelia/
 │   ├── recursos/                   # Catálogo de herramientas y laboratorios (.json)
 │   ├── cursos/                     # Cursos y certificaciones recomendadas (.json)
 │   └── proyectos/                  # Repositorios de la organización (.json)
-├── posts/                          # Páginas HTML estáticas generadas (/posts/<id>/)
-├── noticias/                       # Páginas HTML estáticas generadas (/noticias/<id>/)
 ├── scripts/
 │   └── build.js                    # Compilador de Markdown a HTML estático (SSG)
 ├── index.html                      # Portal principal
 ├── CONTRIBUTING.md                  # Guía paso a paso para estudiantes
+├── LICENSE.md                      # Licencia dual (MIT para código, CC BY-SA para contenidos)
 └── README.md                       # Documentación del proyecto
 ```
+
+> **Nota:** El repositorio almacena únicamente los archivos fuente y el contenido en Markdown (`.md`). Al hacer *push* o fusionar una PR en `main`, **GitHub Actions** ejecuta automáticamente `node scripts/build.js` y genera las páginas `.html` (`/posts/<slug>/` y `/noticias/<slug>/`) que se publican en **GitHub Pages**.
 
 ---
 

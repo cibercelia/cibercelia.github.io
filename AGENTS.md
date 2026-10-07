@@ -38,10 +38,9 @@ Cualquier agente de IA que genere contenido, modifique código o revise contribu
   - Enlaces y herramientas: `content/recursos/index.json`
   - Cursos y certificaciones: `content/cursos/index.json`
   - Repositorios de la organización: `content/proyectos/index.json`
-- **Compilación obligatoria**: Cada vez que se añade, modifica o elimina un artículo, noticia o recurso, se **DEBE ejecutar el compilador SSG**:
-  ```bash
-  node scripts/build.js
-  ```
+- **Exclusión de archivos HTML compilados en Git**: Las carpetas generadas `posts/`, `noticias/`, `assets/data/` y `assets/js/content.js` están incluidas en `.gitignore`. El repositorio almacena únicamente los archivos `.md` y fuentes.
+- **Compilación automática en GitHub Pages**: En cada *push* o integración a `main`, GitHub Actions ejecuta `node scripts/build.js` y publica las páginas renderizadas directamente en GitHub Pages.
+- **Validación local obligatoria**: En desarrollo local o antes de enviar una PR/commit, se **DEBE ejecutar el compilador SSG** (`node scripts/build.js`) para verificar que no existan errores de compilación antes de subir los cambios Markdown.
 - **Páginas HTML estáticas e independientes**:
   - Los artículos se compilan en `posts/<slug>/index.html` (accesible en `/posts/<slug>/`).
   - Las noticias se compilan en `noticias/<slug>/index.html` (accesible en `/noticias/<slug>/`).
