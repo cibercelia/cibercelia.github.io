@@ -151,13 +151,14 @@ function renderMarkdownToHtml(rawMarkdown) {
   // Tablas estilizadas y píldoras de estado
   html = html.replace(/<table>([\s\S]*?)<\/table>/g, (match, tableInner) => {
     let enhanced = tableInner
-      .replace(/<td>\s*⚠️\s*Bajo\s*<\/td>/gi, '<td><span class="status-pill status-danger">⚠️ Bajo</span></td>')
-      .replace(/<td>\s*🟡\s*Medio\s*<\/td>/gi, '<td><span class="status-pill status-warning">🟡 Medio</span></td>')
-      .replace(/<td>\s*🟢\s*Muy Alto\s*<\/td>/gi, '<td><span class="status-pill status-success">🟢 Muy Alto</span></td>')
-      .replace(/<td>\s*✅\s*Sí\s*<\/td>/gi, '<td><span class="status-pill status-success">✅ Sí</span></td>')
-      .replace(/<td>\s*✅\s*<strong>Sí<\/strong>\s*<\/td>/gi, '<td><span class="status-pill status-success">✅ <strong>Sí</strong></span></td>')
-      .replace(/<td>\s*❌\s*No\s*<\/td>/gi, '<td><span class="status-pill status-danger">❌ No</span></td>')
-      .replace(/<td>\s*❌\s*No \((.*?)\)\s*<\/td>/gi, '<td><span class="status-pill status-danger">❌ No ($1)</span></td>');
+      .replace(/<td([^>]*)>\s*(?:⚠️\s*)?Bajo\s*<\/td>/gi, '<td$1><span class="status-pill status-danger">Bajo</span></td>')
+      .replace(/<td([^>]*)>\s*(?:🟡\s*)?Medio\s*<\/td>/gi, '<td$1><span class="status-pill status-warning">Medio</span></td>')
+      .replace(/<td([^>]*)>\s*(?:🟢\s*)?Muy Alto\s*<\/td>/gi, '<td$1><span class="status-pill status-success">Muy Alto</span></td>')
+      .replace(/<td([^>]*)>\s*(?:🟢\s*)?Alto\s*<\/td>/gi, '<td$1><span class="status-pill status-success">Alto</span></td>')
+      .replace(/<td([^>]*)>\s*(?:✅\s*)?<strong>Sí<\/strong>\s*<\/td>/gi, '<td$1><span class="status-pill status-success"><strong>Sí</strong></span></td>')
+      .replace(/<td([^>]*)>\s*(?:✅\s*)?Sí\s*<\/td>/gi, '<td$1><span class="status-pill status-success">Sí</span></td>')
+      .replace(/<td([^>]*)>\s*(?:❌\s*)?No \((.*?)\)\s*<\/td>/gi, '<td$1><span class="status-pill status-danger">No ($2)</span></td>')
+      .replace(/<td([^>]*)>\s*(?:❌\s*)?No\s*<\/td>/gi, '<td$1><span class="status-pill status-danger">No</span></td>');
     return `<div class="table-responsive"><table class="styled-table">${enhanced}</table></div>`;
   });
 

@@ -21,11 +21,11 @@ La autenticación multifactor (**MFA**) es la primera línea de defensa para pro
 
 | Método MFA | Nivel de seguridad | Resistente a phishing (AiTM) | Vulnerable a SIM swapping |
 | :--- | :---: | :---: | :---: |
-| **SMS / Llamada** | ⚠️ Bajo | ❌ No | ✅ Sí |
-| **Email OTP** | ⚠️ Bajo | ❌ No | ❌ No |
-| **App TOTP (Google/MS Auth)** | 🟡 Medio | ❌ No | ❌ No |
-| **Notificación Push** | 🟡 Medio | ❌ No (Fatiga MFA) | ❌ No |
-| **FIDO2 / Passkeys / WebAuthn** | 🟢 Muy Alto | ✅ **Sí** | ❌ No |
+| **SMS / Llamada** | Bajo | No | Sí |
+| **Email OTP** | Bajo | No | No |
+| **App TOTP (Google/MS Auth)** | Medio | No | No |
+| **Notificación Push** | Medio | No (Fatiga MFA) | No |
+| **FIDO2 / Passkeys / WebAuthn** | Muy Alto | **Sí** | No |
 
 ---
 
