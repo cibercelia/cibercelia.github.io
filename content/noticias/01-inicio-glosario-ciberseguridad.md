@@ -1,5 +1,5 @@
 ---
-title: "Inicio del proyecto Glosario Colaborativo de Ciberseguridad"
+title: "Inicio del proyecto glosario colaborativo de ciberseguridad"
 date: "2026-10-01"
 author: "CiberCelia"
 author_github: "cibercelia"
@@ -8,7 +8,7 @@ tags: ["glosario", "docs-as-code", "mkdocs", "proyectos", "colaborativo"]
 summary: "Puesta en marcha del repositorio glosario de CiberCelia para documentar términos y conceptos clave de seguridad mediante metodología Docs-as-Code."
 ---
 
-# Inicio del proyecto Glosario Colaborativo de Ciberseguridad
+# Inicio del proyecto glosario colaborativo de ciberseguridad
 
 El alumnado del Curso de Especialización de Ciberseguridad del IES Celia Viñas cuenta con un nuevo espacio colaborativo: el **Glosario de Ciberseguridad**.
 
@@ -16,7 +16,7 @@ El repositorio, alojado en [github.com/cibercelia/glosario](https://github.com/c
 
 ---
 
-## Objetivos del Glosario
+## Objetivos del glosario
 
 1. **Construir una base de conocimiento común**: Documentar términos fundamentales (autenticación, criptografía, normativas, técnicas ofensivas y defensivas) con rigor técnico.
 2. **Practicar Docs-as-Code**: Familiarizarse con el flujo de trabajo estándar en la industria (Git, ramas, Markdown, revisión por pares y despliegue continuo).

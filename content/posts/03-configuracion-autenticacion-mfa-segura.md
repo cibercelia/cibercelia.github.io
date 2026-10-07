@@ -1,5 +1,5 @@
 ---
-title: "MFA Seguro: De contraseñas débiles a Passkeys y FIDO2"
+title: "MFA seguro: de contraseñas débiles a passkeys y FIDO2"
 date: "2026-09-28"
 author: "CiberCelia"
 author_github: "cibercelia"
@@ -8,7 +8,7 @@ tags: ["mfa", "fido2", "autenticacion", "passkeys", "glosario"]
 summary: "Comparativa entre SMS, TOTP y llaves de seguridad físicas resistentes a ataques de phishing de adversario intermediario (AiTM)."
 ---
 
-# MFA Seguro: De contraseñas débiles a Passkeys y FIDO2
+# MFA seguro: de contraseñas débiles a passkeys y FIDO2
 
 La autenticación multifactor (**MFA**) es la primera línea de defensa para proteger identidades en la nube y accesos corporativos. Sin embargo, no todos los métodos de doble factor ofrecen el mismo nivel de protección.
 
@@ -17,9 +17,9 @@ La autenticación multifactor (**MFA**) es la primera línea de defensa para pro
 
 ---
 
-## Comparativa de Factores de Autenticación
+## Comparativa de factores de autenticación
 
-| Método MFA | Nivel de Seguridad | Resistente a Phishing (AiTM) | Vulnerable a SIM Swapping |
+| Método MFA | Nivel de seguridad | Resistente a phishing (AiTM) | Vulnerable a SIM swapping |
 | :--- | :---: | :---: | :---: |
 | **SMS / Llamada** | ⚠️ Bajo | ❌ No | ✅ Sí |
 | **Email OTP** | ⚠️ Bajo | ❌ No | ❌ No |
@@ -50,7 +50,7 @@ El estándar **FIDO2 (WebAuthn)** utiliza criptografía asimétrica vinculada cr
 
 ---
 
-## Recomendaciones para Administradores
+## Recomendaciones para administradores
 
 1. Forzar la deshabilitación del segundo factor vía SMS en entornos corporativos.
 2. Habilitar **Number Matching** en notificaciones push para evitar ataques de fatiga MFA.

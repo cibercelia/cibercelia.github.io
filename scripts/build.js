@@ -231,10 +231,10 @@ function renderArticleHtmlPage(item, relativeRoot = '../../') {
       <div class="article-contrib-callout">
         <div class="article-contrib-text">
           <h4>¿Tienes correcciones o quieres publicar tu propio artículo?</h4>
-          <p>Puedes proponer cambios o enviar tus propias guías técnicas mediante Pull Request en el repositorio de CiberCelia.</p>
+          <p>Puedes proponer cambios o enviar tus propias guías técnicas mediante solicitudes de extracción (*pull requests*) en el repositorio de CiberCelia.</p>
         </div>
         <a href="https://github.com/cibercelia/cibercelia/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" class="btn-primary-glow" style="flex-shrink: 0; font-size: 0.85rem; padding: 0.6rem 1.2rem;">
-          <span>Guía de Contribución</span>
+          <span>Guía de contribución</span>
         </a>
       </div>
 

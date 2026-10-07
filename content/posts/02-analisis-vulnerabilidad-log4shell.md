@@ -1,5 +1,5 @@
 ---
-title: "Análisis en Profundidad de Log4Shell (CVE-2021-44228)"
+title: "Análisis en profundidad de Log4Shell (CVE-2021-44228)"
 date: "2026-10-02"
 author: "CiberCelia"
 author_github: "cibercelia"
@@ -26,7 +26,7 @@ Cuando Log4j procesaba un mensaje que contenía esta cadena (por ejemplo, en la 
 
 ---
 
-## Flujo del Ataque
+## Flujo del ataque
 
 ```text
 [Atacante] --( Petición HTTP con payload ${jndi:...} )--> [Servidor Vulnerable (Log4j)]
@@ -42,9 +42,9 @@ Cuando Log4j procesaba un mensaje que contenía esta cadena (por ejemplo, en la 
 
 ---
 
-## Detección y Mitigación
+## Detección y mitigación
 
-### 1. Regla Sigma para detección en logs de proxy o WAF:
+### 1. Regla Sigma para detección en registros de servidor web o WAF
 
 ```yaml
 title: Detección de patrones JNDI en cabeceras HTTP
@@ -62,7 +62,7 @@ falsepositives:
 level: critical
 ```
 
-### 2. Medidas de remediación inmediatas:
+### 2. Medidas de remediación inmediatas
 - Actualizar Log4j a versiones `>= 2.17.1`.
 - Configurar la propiedad del sistema `log4j2.formatMsgNoLookups=true` en versiones 2.10 a 2.14.1.
 - Restringir el tráfico saliente desde servidores de aplicaciones hacia puertos no estándar de LDAP/RMI.

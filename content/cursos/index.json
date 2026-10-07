@@ -1,14 +1,14 @@
 [
   {
     "id": "curso-roadmap-ciber",
-    "title": "Cybersecurity Roadmap - Step by Step",
+    "title": "Cybersecurity Roadmap: guía paso a paso",
     "category": "curso",
     "url": "https://roadmap.sh/cyber-security",
     "summary": "Mapa de ruta interactivo con los conocimientos fundamentales y avanzados para orientar tu carrera en ciberseguridad.",
     "tags": ["roadmap", "carrera", "fundamentos", "gratis"],
     "provider": "roadmap.sh",
     "level": "Todos los niveles",
-    "type": "Ruta de Aprendizaje",
+    "type": "Ruta de aprendizaje",
     "date": "2026-10-01"
   },
   {
@@ -20,7 +20,7 @@
     "tags": ["certificacion", "comptia", "seguridad", "entry-level"],
     "provider": "CompTIA",
     "level": "Intermedio",
-    "type": "Certificación Oficial",
+    "type": "Certificación oficial",
     "date": "2026-10-01"
   },
   {
@@ -32,31 +32,31 @@
     "tags": ["certificacion", "pentesting", "redteam", "practico"],
     "provider": "INE Security",
     "level": "Junior / Práctico",
-    "type": "Certificación Práctica",
+    "type": "Certificación práctica",
     "date": "2026-09-20"
   },
   {
     "id": "curso-cisco-skillsforall",
-    "title": "Cisco Skills For All - Fundamentos de Ciberseguridad",
+    "title": "Cisco Skills for All: fundamentos de ciberseguridad",
     "category": "curso",
     "url": "https://skillsforall.com/",
     "summary": "Cursos oficiales gratuitos de Cisco Networking Academy sobre defensa de redes, respuesta a incidentes y conceptos clave.",
     "tags": ["cisco", "redes", "gratis", "certificacion-insignia"],
     "provider": "Cisco",
     "level": "Iniciación",
-    "type": "Curso Gratuito",
+    "type": "Curso gratuito",
     "date": "2026-09-15"
   },
   {
     "id": "curso-google-cybersecurity",
-    "title": "Certificado Profesional de Ciberseguridad de Google",
+    "title": "Certificado profesional de ciberseguridad de Google",
     "category": "curso",
     "url": "https://grow.google/certificates/cybersecurity/",
     "summary": "Formación enfocada a analistas SOC: SIEM (Chronicle/Splunk), Python para seguridad, Linux y detección de intrusiones.",
     "tags": ["google", "soc", "siem", "python", "blueteam"],
     "provider": "Google / Coursera",
     "level": "Iniciación / Intermedio",
-    "type": "Certificado Profesional",
+    "type": "Certificado profesional",
     "date": "2026-09-10"
   }
 ]

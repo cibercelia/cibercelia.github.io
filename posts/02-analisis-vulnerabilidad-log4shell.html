@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Análisis en Profundidad de Log4Shell (CVE-2021-44228) - CiberCelia</title>
+  <title>Análisis en profundidad de Log4Shell (CVE-2021-44228) - CiberCelia</title>
   <meta name="description" content="Estudio técnico de una de las vulnerabilidades más críticas de la historia reciente: origen JNDI, mecanismo de inyección y contramedidas.">
   <meta name="author" content="CiberCelia">
   
   <!-- Open Graph -->
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Análisis en Profundidad de Log4Shell (CVE-2021-44228) - CiberCelia">
+  <meta property="og:title" content="Análisis en profundidad de Log4Shell (CVE-2021-44228) - CiberCelia">
   <meta property="og:description" content="Estudio técnico de una de las vulnerabilidades más críticas de la historia reciente: origen JNDI, mecanismo de inyección y contramedidas.">
   <meta property="og:image" content="../../assets/images/logo.svg">
 
@@ -64,7 +64,7 @@
       <span class="breadcrumb-separator">/</span>
       <a href="../../index.html#hub">Artículos</a>
       <span class="breadcrumb-separator">/</span>
-      <span style="color: var(--text-primary);">Análisis en Profundidad de Log4Shell (CVE-2021-44228)</span>
+      <span style="color: var(--text-primary);">Análisis en profundidad de Log4Shell (CVE-2021-44228)</span>
     </nav>
 
     <!-- Main Article Card -->
@@ -86,7 +86,7 @@
           </div>
         </div>
 
-        <h1 class="article-main-title">Análisis en Profundidad de Log4Shell (CVE-2021-44228)</h1>
+        <h1 class="article-main-title">Análisis en profundidad de Log4Shell (CVE-2021-44228)</h1>
 
         <div class="article-author-bar">
           <div class="article-author-left">
@@ -117,7 +117,7 @@
     </div>
 <p>Cuando Log4j procesaba un mensaje que contenía esta cadena (por ejemplo, en la cabecera <code>User-Agent</code> de una petición HTTP), intentaba contactar con el servidor LDAP del atacante y descargar una clase Java ejecutable.</p>
 <hr>
-<h2>Flujo del Ataque</h2>
+<h2>Flujo del ataque</h2>
 <div class="code-wrapper" style="position: relative;">
       <button class="code-copy-btn" onclick="copyCodeSnippet(this)">Copiar</button>
       <pre class="language-text"><code class="language-text">[Atacante] --( Petición HTTP con payload ${jndi:...} )--&gt; [Servidor Vulnerable (Log4j)]
@@ -132,8 +132,8 @@
 </code></pre>
     </div>
 <hr>
-<h2>Detección y Mitigación</h2>
-<h3>1. Regla Sigma para detección en logs de proxy o WAF:</h3>
+<h2>Detección y mitigación</h2>
+<h3>1. Regla Sigma para detección en registros de servidor web o WAF</h3>
 <div class="code-wrapper" style="position: relative;">
       <button class="code-copy-btn" onclick="copyCodeSnippet(this)">Copiar</button>
       <pre class="language-yaml"><code class="language-yaml">title: Detección de patrones JNDI en cabeceras HTTP
@@ -151,7 +151,7 @@ falsepositives:
 level: critical
 </code></pre>
     </div>
-<h3>2. Medidas de remediación inmediatas:</h3>
+<h3>2. Medidas de remediación inmediatas</h3>
 <ul>
 <li>Actualizar Log4j a versiones <code>&gt;= 2.17.1</code>.</li>
 <li>Configurar la propiedad del sistema <code>log4j2.formatMsgNoLookups=true</code> en versiones 2.10 a 2.14.1.</li>
@@ -164,10 +164,10 @@ level: critical
       <div class="article-contrib-callout">
         <div class="article-contrib-text">
           <h4>¿Tienes correcciones o quieres publicar tu propio artículo?</h4>
-          <p>Puedes proponer cambios o enviar tus propias guías técnicas mediante Pull Request en el repositorio de CiberCelia.</p>
+          <p>Puedes proponer cambios o enviar tus propias guías técnicas mediante solicitudes de extracción (*pull requests*) en el repositorio de CiberCelia.</p>
         </div>
         <a href="https://github.com/cibercelia/cibercelia/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" class="btn-primary-glow" style="flex-shrink: 0; font-size: 0.85rem; padding: 0.6rem 1.2rem;">
-          <span>Guía de Contribución</span>
+          <span>Guía de contribución</span>
         </a>
       </div>
 

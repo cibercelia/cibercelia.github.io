@@ -34,7 +34,7 @@
   },
   {
     "id": "rec-gtfobins",
-    "title": "GTFOBins - Unix Binaries Escalation",
+    "title": "GTFOBins: escalada de privilegios en binarios Unix",
     "category": "recurso",
     "url": "https://gtfobins.github.io/",
     "summary": "Catálogo seleccionado de binarios de Unix para eludir restricciones de seguridad locales en sistemas mal configurados (SUID, Sudo).",
@@ -45,7 +45,7 @@
   },
   {
     "id": "rec-cyberchef",
-    "title": "CyberChef - The Cyber Swiss Army Knife",
+    "title": "CyberChef: la navaja suiza de la ciberseguridad",
     "category": "recurso",
     "url": "https://gchq.github.io/CyberChef/",
     "summary": "Aplicación web desarrollada por GCHQ para codificar, decodificar, cifrar, analizar datos binarios y realizar desofuscaciones.",
@@ -56,7 +56,7 @@
   },
   {
     "id": "rec-mitre-attack",
-    "title": "MITRE ATT&CK Matrix",
+    "title": "Matriz MITRE ATT&CK",
     "category": "recurso",
     "url": "https://attack.mitre.org/",
     "summary": "Base de conocimiento global de tácticas, técnicas y procedimientos (TTPs) de adversarios basada en observaciones del mundo real.",
@@ -67,7 +67,7 @@
   },
   {
     "id": "rec-owasp-top-10",
-    "title": "OWASP Top 10 Web Application Security Risks",
+    "title": "OWASP Top 10: riesgos de seguridad en aplicaciones web",
     "category": "recurso",
     "url": "https://owasp.org/www-project-top-ten/",
     "summary": "Documento de concienciación sobre los riesgos de seguridad más críticos para aplicaciones web.",
@@ -78,7 +78,7 @@
   },
   {
     "id": "rec-incibe-guias",
-    "title": "INCIBE-CERT Guías y Avisos de Seguridad",
+    "title": "INCIBE-CERT: guías y avisos de seguridad",
     "category": "recurso",
     "url": "https://www.incibe.es/incibe-cert",
     "summary": "Centro de respuesta ante incidentes nacional para ciudadanos y empresas en España: avisos, guías y alertas de ciberseguridad.",

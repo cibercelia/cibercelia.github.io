@@ -7,7 +7,7 @@ const CIBERCELIA_CONTENT = {
   "posts": [
     {
       "id": "01-guia-pentesting-laboratorio",
-      "title": "Guía para montar tu propio Laboratorio de Pentesting con VirtualBox y Docker",
+      "title": "Guía para montar tu propio laboratorio de pentesting con VirtualBox y Docker",
       "category": "post",
       "date": "2026-10-05",
       "author": "CiberCelia",
@@ -26,7 +26,7 @@ const CIBERCELIA_CONTENT = {
     },
     {
       "id": "02-analisis-vulnerabilidad-log4shell",
-      "title": "Análisis en Profundidad de Log4Shell (CVE-2021-44228)",
+      "title": "Análisis en profundidad de Log4Shell (CVE-2021-44228)",
       "category": "post",
       "date": "2026-10-02",
       "author": "CiberCelia",
@@ -45,7 +45,7 @@ const CIBERCELIA_CONTENT = {
     },
     {
       "id": "03-configuracion-autenticacion-mfa-segura",
-      "title": "MFA Seguro: De contraseñas débiles a Passkeys y FIDO2",
+      "title": "MFA seguro: de contraseñas débiles a passkeys y FIDO2",
       "category": "post",
       "date": "2026-09-28",
       "author": "CiberCelia",
@@ -66,7 +66,7 @@ const CIBERCELIA_CONTENT = {
   "noticias": [
     {
       "id": "01-inicio-glosario-ciberseguridad",
-      "title": "Inicio del proyecto Glosario Colaborativo de Ciberseguridad",
+      "title": "Inicio del proyecto glosario colaborativo de ciberseguridad",
       "category": "noticia",
       "date": "2026-10-01",
       "author": "CiberCelia",
@@ -85,7 +85,7 @@ const CIBERCELIA_CONTENT = {
     },
     {
       "id": "02-entrada-en-vigor-directiva-nis2",
-      "title": "Transposición y claves de la Directiva Europea NIS2 para entidades esenciales",
+      "title": "Transposición y claves de la directiva europea NIS2 para entidades esenciales",
       "category": "noticia",
       "date": "2026-10-01",
       "author": "CiberCelia",
@@ -155,7 +155,7 @@ const CIBERCELIA_CONTENT = {
     },
     {
       "id": "rec-gtfobins",
-      "title": "GTFOBins - Unix Binaries Escalation",
+      "title": "GTFOBins: escalada de privilegios en binarios Unix",
       "category": "recurso",
       "url": "https://gtfobins.github.io/",
       "summary": "Catálogo seleccionado de binarios de Unix para eludir restricciones de seguridad locales en sistemas mal configurados (SUID, Sudo).",
@@ -171,7 +171,7 @@ const CIBERCELIA_CONTENT = {
     },
     {
       "id": "rec-cyberchef",
-      "title": "CyberChef - The Cyber Swiss Army Knife",
+      "title": "CyberChef: la navaja suiza de la ciberseguridad",
       "category": "recurso",
       "url": "https://gchq.github.io/CyberChef/",
       "summary": "Aplicación web desarrollada por GCHQ para codificar, decodificar, cifrar, analizar datos binarios y realizar desofuscaciones.",
@@ -187,7 +187,7 @@ const CIBERCELIA_CONTENT = {
     },
     {
       "id": "rec-mitre-attack",
-      "title": "MITRE ATT&CK Matrix",
+      "title": "Matriz MITRE ATT&CK",
       "category": "recurso",
       "url": "https://attack.mitre.org/",
       "summary": "Base de conocimiento global de tácticas, técnicas y procedimientos (TTPs) de adversarios basada en observaciones del mundo real.",
@@ -203,7 +203,7 @@ const CIBERCELIA_CONTENT = {
     },
     {
       "id": "rec-owasp-top-10",
-      "title": "OWASP Top 10 Web Application Security Risks",
+      "title": "OWASP Top 10: riesgos de seguridad en aplicaciones web",
       "category": "recurso",
       "url": "https://owasp.org/www-project-top-ten/",
       "summary": "Documento de concienciación sobre los riesgos de seguridad más críticos para aplicaciones web.",
@@ -219,7 +219,7 @@ const CIBERCELIA_CONTENT = {
     },
     {
       "id": "rec-incibe-guias",
-      "title": "INCIBE-CERT Guías y Avisos de Seguridad",
+      "title": "INCIBE-CERT: guías y avisos de seguridad",
       "category": "recurso",
       "url": "https://www.incibe.es/incibe-cert",
       "summary": "Centro de respuesta ante incidentes nacional para ciudadanos y empresas en España: avisos, guías y alertas de ciberseguridad.",
@@ -238,7 +238,7 @@ const CIBERCELIA_CONTENT = {
   "cursos": [
     {
       "id": "curso-roadmap-ciber",
-      "title": "Cybersecurity Roadmap - Step by Step",
+      "title": "Cybersecurity Roadmap: guía paso a paso",
       "category": "curso",
       "url": "https://roadmap.sh/cyber-security",
       "summary": "Mapa de ruta interactivo con los conocimientos fundamentales y avanzados para orientar tu carrera en ciberseguridad.",
@@ -250,7 +250,7 @@ const CIBERCELIA_CONTENT = {
       ],
       "provider": "roadmap.sh",
       "level": "Todos los niveles",
-      "type": "Ruta de Aprendizaje",
+      "type": "Ruta de aprendizaje",
       "date": "2026-10-01"
     },
     {
@@ -267,7 +267,7 @@ const CIBERCELIA_CONTENT = {
       ],
       "provider": "CompTIA",
       "level": "Intermedio",
-      "type": "Certificación Oficial",
+      "type": "Certificación oficial",
       "date": "2026-10-01"
     },
     {
@@ -284,12 +284,12 @@ const CIBERCELIA_CONTENT = {
       ],
       "provider": "INE Security",
       "level": "Junior / Práctico",
-      "type": "Certificación Práctica",
+      "type": "Certificación práctica",
       "date": "2026-09-20"
     },
     {
       "id": "curso-cisco-skillsforall",
-      "title": "Cisco Skills For All - Fundamentos de Ciberseguridad",
+      "title": "Cisco Skills for All: fundamentos de ciberseguridad",
       "category": "curso",
       "url": "https://skillsforall.com/",
       "summary": "Cursos oficiales gratuitos de Cisco Networking Academy sobre defensa de redes, respuesta a incidentes y conceptos clave.",
@@ -301,12 +301,12 @@ const CIBERCELIA_CONTENT = {
       ],
       "provider": "Cisco",
       "level": "Iniciación",
-      "type": "Curso Gratuito",
+      "type": "Curso gratuito",
       "date": "2026-09-15"
     },
     {
       "id": "curso-google-cybersecurity",
-      "title": "Certificado Profesional de Ciberseguridad de Google",
+      "title": "Certificado profesional de ciberseguridad de Google",
       "category": "curso",
       "url": "https://grow.google/certificates/cybersecurity/",
       "summary": "Formación enfocada a analistas SOC: SIEM (Chronicle/Splunk), Python para seguridad, Linux y detección de intrusiones.",
@@ -319,14 +319,14 @@ const CIBERCELIA_CONTENT = {
       ],
       "provider": "Google / Coursera",
       "level": "Iniciación / Intermedio",
-      "type": "Certificado Profesional",
+      "type": "Certificado profesional",
       "date": "2026-09-10"
     }
   ],
   "proyectos": [
     {
       "id": "proj-glosario",
-      "title": "Glosario Colaborativo de Ciberseguridad",
+      "title": "Glosario colaborativo de ciberseguridad",
       "category": "proyecto",
       "url": "https://cibercelia.github.io/glosario/",
       "github_url": "https://github.com/cibercelia/glosario",
