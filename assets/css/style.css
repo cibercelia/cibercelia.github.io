@@ -1119,23 +1119,151 @@ code, pre {
   color: #e2e8f0;
 }
 
-.markdown-body table {
+/* Modern Responsive Table Styles */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  margin: 2rem 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  backdrop-filter: var(--backdrop-blur);
+  box-shadow: var(--shadow-sm);
+  -webkit-overflow-scrolling: touch;
+}
+
+.markdown-body table, .styled-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1.5rem 0;
-}
-
-.markdown-body th, .markdown-body td {
-  border: 1px solid var(--border-color);
-  padding: 0.75rem 1rem;
   text-align: left;
+  font-size: 0.92rem;
+  margin: 0;
 }
 
-.markdown-body th {
-  background: var(--bg-card);
+.markdown-body th, .styled-table th {
+  background: var(--bg-secondary);
   color: var(--accent-cyan);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 1rem 1.25rem;
+  border: none;
+  border-bottom: 2px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.markdown-body td, .styled-table td {
+  padding: 1rem 1.25rem;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  vertical-align: middle;
+  line-height: 1.5;
+}
+
+.markdown-body tbody tr:last-child td, .styled-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.markdown-body tbody tr:nth-child(even), .styled-table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+[data-theme="light"] .markdown-body tbody tr:nth-child(even),
+[data-theme="light"] .styled-table tbody tr:nth-child(even) {
+  background: rgba(15, 23, 42, 0.02);
+}
+
+.markdown-body tbody tr:hover, .styled-table tbody tr:hover {
+  background: var(--bg-card-hover);
+  transition: background 0.15s ease;
+}
+
+/* Status Badges inside Tables */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.status-pill.status-low, .status-pill.status-danger {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.status-pill.status-medium, .status-pill.status-warning {
+  background: rgba(245, 158, 11, 0.12);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.status-pill.status-high, .status-pill.status-success {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.status-pill.status-neutral {
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+/* Diagram Container & Mermaid Styling */
+.diagram-container {
+  background: var(--bg-card);
+  backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  margin: 2rem 0;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.diagram-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.diagram-badge {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  background: var(--accent-cyan-dim);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-glow);
+}
+
+.mermaid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+  padding: 0.5rem 0;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+  font-family: var(--font-sans) !important;
 }
 
 .code-copy-btn {

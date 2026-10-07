@@ -90,6 +90,22 @@ function parseMarkdownFile(filePath, category) {
   marked.setOptions({ gfm: true, breaks: false });
   let htmlContent = marked.parse(processedMarkdown);
 
+  // Process Mermaid diagrams
+  htmlContent = htmlContent.replace(/<pre><code class="language-mermaid">([\s\S]*?)<\/code><\/pre>/g, (match, code) => {
+    const rawMermaid = code
+      .replace(/&gt;/g, '>')
+      .replace(/&lt;/g, '<')
+      .replace(/&amp;/g, '&')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'");
+    return `<div class="diagram-container">
+      <div class="diagram-header">
+        <span class="diagram-badge">Diagrama interactivo</span>
+      </div>
+      <div class="mermaid">${rawMermaid}</div>
+    </div>`;
+  });
+
   // Wrap pre/code blocks with copy button
   htmlContent = htmlContent.replace(/<pre><code class="language-([\w-]+)">([\s\S]*?)<\/code><\/pre>/g, (match, lang, code) => {
     return `<div class="code-wrapper" style="position: relative;">
@@ -103,6 +119,19 @@ function parseMarkdownFile(filePath, category) {
       <button class="code-copy-btn" onclick="copyCodeSnippet(this)">Copiar</button>
       <pre class="language-text"><code class="language-text">${code}</code></pre>
     </div>`;
+  });
+
+  // Enhance tables with responsive wrapper and status badges
+  htmlContent = htmlContent.replace(/<table>([\s\S]*?)<\/table>/g, (match, tableInner) => {
+    let enhancedInner = tableInner
+      .replace(/<td>\s*⚠️\s*Bajo\s*<\/td>/gi, '<td><span class="status-pill status-danger">⚠️ Bajo</span></td>')
+      .replace(/<td>\s*🟡\s*Medio\s*<\/td>/gi, '<td><span class="status-pill status-warning">🟡 Medio</span></td>')
+      .replace(/<td>\s*🟢\s*Muy Alto\s*<\/td>/gi, '<td><span class="status-pill status-success">🟢 Muy Alto</span></td>')
+      .replace(/<td>\s*✅\s*Sí\s*<\/td>/gi, '<td><span class="status-pill status-success">✅ Sí</span></td>')
+      .replace(/<td>\s*✅\s*<strong>Sí<\/strong>\s*<\/td>/gi, '<td><span class="status-pill status-success">✅ <strong>Sí</strong></span></td>')
+      .replace(/<td>\s*❌\s*No\s*<\/td>/gi, '<td><span class="status-pill status-danger">❌ No</span></td>')
+      .replace(/<td>\s*❌\s*No \((.*?)\)\s*<\/td>/gi, '<td><span class="status-pill status-danger">❌ No ($1)</span></td>');
+    return `<div class="table-responsive"><table class="styled-table">${enhancedInner}</table></div>`;
   });
 
   metadata.htmlContent = htmlContent;
@@ -267,10 +296,69 @@ function renderArticleHtmlPage(item, relativeRoot = '../../') {
 
   <!-- Scripts -->
   <script src="${relativeRoot}assets/js/prism.js"></script>
+  <script src="${relativeRoot}assets/js/mermaid.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const themeToggleBtn = document.getElementById('theme-toggle');
       let currentTheme = localStorage.getItem('cibercelia-theme') || 'dark';
+
+      function initMermaid(theme) {
+        if (!window.mermaid) return;
+        const isDark = theme === 'dark';
+        try {
+          mermaid.initialize({
+            startOnLoad: false,
+            theme: isDark ? 'dark' : 'default',
+            themeVariables: isDark ? {
+              darkMode: true,
+              background: '#111827',
+              primaryColor: '#1e293b',
+              primaryTextColor: '#f8fafc',
+              primaryBorderColor: '#00f0ff',
+              lineColor: '#00f0ff',
+              secondaryColor: '#334155',
+              tertiaryColor: '#0f172a',
+              noteBkgColor: '#1e293b',
+              noteTextColor: '#f8fafc',
+              noteBorderColor: '#00f0ff',
+              actorBkg: '#1e293b',
+              actorTextColor: '#f8fafc',
+              actorBorder: '#00f0ff',
+              signalColor: '#00f0ff',
+              signalTextColor: '#f8fafc',
+              labelBoxBkgColor: '#1e293b',
+              labelBoxBorderColor: '#00f0ff',
+              labelTextColor: '#f8fafc',
+              loopTextColor: '#f8fafc'
+            } : {
+              darkMode: false,
+              background: '#ffffff',
+              primaryColor: '#f0f9ff',
+              primaryTextColor: '#0f172a',
+              primaryBorderColor: '#0284c7',
+              lineColor: '#0284c7',
+              secondaryColor: '#f1f5f9',
+              tertiaryColor: '#ffffff',
+              noteBkgColor: '#f8fafc',
+              noteTextColor: '#0f172a',
+              noteBorderColor: '#0284c7',
+              actorBkg: '#f0f9ff',
+              actorTextColor: '#0f172a',
+              actorBorder: '#0284c7',
+              signalColor: '#0284c7',
+              signalTextColor: '#0f172a',
+              labelBoxBkgColor: '#f0f9ff',
+              labelBoxBorderColor: '#0284c7',
+              labelTextColor: '#0f172a',
+              loopTextColor: '#0f172a'
+            },
+            fontFamily: 'Inter, sans-serif'
+          });
+          mermaid.run({ querySelector: '.mermaid' });
+        } catch (e) {
+          console.error('Error rendering Mermaid diagram:', e);
+        }
+      }
 
       function applyTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
@@ -283,11 +371,14 @@ function renderArticleHtmlPage(item, relativeRoot = '../../') {
       }
 
       applyTheme(currentTheme);
+      initMermaid(currentTheme);
 
       if (themeToggleBtn) {
         themeToggleBtn.addEventListener('click', () => {
           currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
           applyTheme(currentTheme);
+          // Reload page to re-render SVG with clean theme palette
+          window.location.reload();
         });
       }
 

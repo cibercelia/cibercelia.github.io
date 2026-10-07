@@ -33,19 +33,26 @@ La autenticación multifactor (**MFA**) es la primera línea de defensa para pro
 
 El estándar **FIDO2 (WebAuthn)** utiliza criptografía asimétrica vinculada criptográficamente al dominio del navegador (`Origin binding`):
 
-```text
-+---------------+              +--------------------+              +-------------------+
-|  Navegador /  |              | Servidor Auténtico |              | Servidor Phishing |
-| Llave Física  |              | (banco.com)        |              | (banc0-login.com) |
-+---------------+              +--------------------+              +-------------------+
-        |                                |                                   |
-        |--- 1. Solicita credencial ---->|                                   |
-        |<-- 2. Desafío (Challenge) -----|                                   |
-        |                                                                    |
-        |=== 3. Llave firma desafío con dominio 'banco.com' =================|
-        |                                                                    |
-        |--- 4. Si el atacante intenta reenviar a banc0-login.com ---------> |
-        |    EL NAVEGADOR RECHAZA LA FIRMA POR DISCORDANCIA DE DOMINIO ❌    |
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 👤 Usuario + Llave FIDO2
+    participant Browser as 🌐 Navegador (WebAuthn API)
+    participant Phish as 🎣 Servidor phishing (banc0-login.com)
+    participant Legit as 🏦 Servidor legítimo (banco.com)
+
+    Note over User,Phish: Intento de ataque Adversary-in-the-Middle (AiTM)
+    User->>Phish: 1. Accede a página trampa de phishing
+    Phish->>Legit: 2. Solicita desafío real a banco.com
+    Legit-->>Phish: 3. Devuelve desafío criptográfico (Challenge)
+    Phish-->>Browser: 4. Reenvía desafío al navegador de la víctima
+    Note over Browser: El navegador vincula el origen 'banc0-login.com'
+    Browser->>User: 5. Solicita toque físico a la llave FIDO2
+    User-->>Browser: 6. Llave firma desafío con dominio 'banc0-login.com'
+    Browser->>Phish: 7. Envía credencial firmada
+    Phish->>Legit: 8. Intenta autenticar en banco.com con la firma
+    Note over Legit: Servidor legítimo verifica firma para origen 'banco.com'
+    Legit--xPhish: ❌ RECHAZADO: Discordancia de origen (banc0-login.com != banco.com)
 ```
 
 ---
