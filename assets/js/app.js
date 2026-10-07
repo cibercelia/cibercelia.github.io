@@ -1,6 +1,6 @@
 /**
  * CiberCelia - Main Application Logic
- * Interactive Search, Filters, Theme Switcher, Modal Markdown Reader.
+ * Interactive Search, Filters, Theme Switcher, Direct Navigation to Full Articles.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,8 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     activeCategory: 'all',
     activeTag: null,
     searchQuery: '',
-    theme: localStorage.getItem('cibercelia-theme') || 'dark',
-    activeModalPost: null
+    theme: localStorage.getItem('cibercelia-theme') || 'dark'
   };
 
   // DOM Elements
@@ -23,14 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultsCountEl = document.getElementById('results-count');
   const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
   const navLinks = document.getElementById('nav-links');
-
-  // Modal Elements
-  const modalOverlay = document.getElementById('article-modal');
-  const modalBody = document.getElementById('modal-markdown-content');
-  const modalTitle = document.getElementById('modal-article-title');
-  const modalCategoryBadge = document.getElementById('modal-category-badge');
-  const modalMetaInfo = document.getElementById('modal-meta-info');
-  const modalCloseBtn = document.getElementById('modal-close-btn');
 
   // Initialize Theme
   function applyTheme(theme) {
@@ -108,17 +99,18 @@ document.addEventListener('DOMContentLoaded', () => {
     return items;
   }
 
-  // Render Card Template
+  // Render Card Template (Direct full page link for posts/news)
   function renderCard(item) {
     const isMarkdownArticle = item.category === 'post' || item.category === 'noticia';
+    const articleHref = `post.html?id=${encodeURIComponent(item.id)}`;
     const hasExternalUrl = !!item.url;
     
     let actionBtnHtml = '';
     if (isMarkdownArticle) {
-      actionBtnHtml = `<button class="card-action-btn" onclick="openArticleModal('${item.id}')">
+      actionBtnHtml = `<a href="${articleHref}" class="card-action-btn">
         Leer artículo
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </button>`;
+      </a>`;
     } else if (hasExternalUrl) {
       actionBtnHtml = `<a href="${item.url}" target="_blank" rel="noopener noreferrer" class="card-action-btn">
         Visitar enlace
@@ -145,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <h3 class="card-title">
           ${isMarkdownArticle 
-            ? `<a href="javascript:void(0)" onclick="openArticleModal('${item.id}')">${item.title}</a>`
+            ? `<a href="${articleHref}">${item.title}</a>`
             : `<a href="${item.url || '#'}" target="_blank" rel="noopener noreferrer">${item.title}</a>`
           }
         </h3>
@@ -244,76 +236,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Modal Article Reader Handler
-  window.openArticleModal = function(id) {
-    const all = getAllItems();
-    const item = all.find(i => i.id === id);
-    if (!item) return;
-
-    state.activeModalPost = item;
-    modalTitle.textContent = item.title;
-    modalCategoryBadge.textContent = item.category.toUpperCase();
-    modalCategoryBadge.className = `category-tag ${item.category}`;
-
-    modalMetaInfo.innerHTML = `
-      <span>Por <strong>${item.author || 'CiberCelia'}</strong></span>
-      ${item.author_github ? `<a href="https://github.com/${item.author_github}" target="_blank" class="nav-badge" style="margin-left: 0.5rem;">@${item.author_github}</a>` : ''}
-      <span style="margin: 0 0.5rem;">•</span>
-      <span>${item.date || ''}</span>
-      ${item.readingTime ? `<span style="margin: 0 0.5rem;">•</span><span>Lectura: ${item.readingTime}</span>` : ''}
-    `;
-
-    // Render Markdown Content
-    const renderedHtml = MarkdownEngine.render(item.content || item.summary);
-    modalBody.innerHTML = renderedHtml;
-
-    // Trigger syntax highlighter if Prism is present
-    if (window.Prism) {
-      Prism.highlightAllUnder(modalBody);
-    }
-
-    modalOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    window.location.hash = `post-${item.id}`;
-  };
-
-  window.closeArticleModal = function() {
-    modalOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-    state.activeModalPost = null;
-    if (window.location.hash.startsWith('#post-')) {
-      history.pushState('', document.title, window.location.pathname + window.location.search);
-    }
-  };
-
-  if (modalCloseBtn) {
-    modalCloseBtn.addEventListener('click', window.closeArticleModal);
-  }
-
-  if (modalOverlay) {
-    modalOverlay.addEventListener('click', (e) => {
-      if (e.target === modalOverlay) {
-        window.closeArticleModal();
-      }
-    });
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('active')) {
-      window.closeArticleModal();
-    }
-  });
-
-  // Hash-based direct link support (e.g. #post-01-guia-pentesting-laboratorio)
-  function handleInitialHash() {
-    const hash = window.location.hash;
-    if (hash && hash.startsWith('#post-')) {
-      const postId = hash.replace('#post-', '');
-      window.openArticleModal(postId);
-    }
-  }
-
-  // Initial Grid Render & Hash check
+  // Initial Grid Render
   renderGrid();
-  handleInitialHash();
 });

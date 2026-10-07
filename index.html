@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CiberCelia - Especialización en Ciberseguridad | IES Celia Viñas</title>
-  <meta name="description" content="Portal oficial y colaborativo del Curso de Especialización de Ciberseguridad del IES Celia Viñas (Almería). Artículos, glosario, recursos, cursos y noticias de ciberseguridad.">
-  <meta name="author" content="IES Celia Viñas - CiberCelia">
+  <title>CiberCelia - Espacio de Ciberseguridad | IES Celia Viñas</title>
+  <meta name="description" content="Espacio colaborativo y recurso didáctico para el alumnado del Curso de Especialización de Ciberseguridad del IES Celia Viñas. Artículos técnicos, enlaces, noticias, cursos y proyectos.">
+  <meta name="author" content="CiberCelia">
   
   <!-- Open Graph / Social Meta -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CiberCelia - Especialización en Ciberseguridad">
-  <meta property="og:description" content="Artículos técnicos, glosario interactivo, cursos y recursos de ciberseguridad creados por el alumnado del IES Celia Viñas.">
+  <meta property="og:title" content="CiberCelia - Espacio Didáctico de Ciberseguridad">
+  <meta property="og:description" content="Artículos técnicos, enlaces, cursos y recursos de ciberseguridad para el alumnado del IES Celia Viñas.">
   <meta property="og:image" content="assets/images/logo.svg">
   
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
@@ -31,19 +31,18 @@
     <div class="container nav-inner">
       <!-- Brand Logo -->
       <a href="index.html" class="brand" aria-label="CiberCelia Inicio">
-        <img src="assets/images/logo.svg" alt="CiberCelia Shield" class="brand-logo" width="38" height="38">
+        <img src="assets/images/logo.svg" alt="CiberCelia Shield" class="brand-logo" width="36" height="36">
         <div class="brand-text">
           <span class="brand-title">CiberCelia</span>
-          <span class="brand-subtitle">IES Celia Viñas</span>
+          <span class="brand-subtitle">Ciberseguridad IES Celia Viñas</span>
         </div>
       </a>
 
       <!-- Desktop Nav Links -->
       <ul class="nav-links" id="nav-links">
-        <li><a href="#hub" class="nav-link active">Hub</a></li>
-        <li><a href="#glosario" class="nav-link">Glosario <span class="nav-badge">Docs-as-Code</span></a></li>
-        <li><a href="#contribuir" class="nav-link">Colaborar</a></li>
-        <li><a href="https://cibercelia.github.io/glosario/" target="_blank" rel="noopener noreferrer" class="btn-glosario">📖 Ir al Glosario</a></li>
+        <li><a href="index.html#hub" class="nav-link active">Hub</a></li>
+        <li><a href="https://cibercelia.github.io/glosario/" target="_blank" rel="noopener noreferrer" class="nav-link">Glosario</a></li>
+        <li><a href="index.html#contribuir" class="nav-link">Colaborar</a></li>
       </ul>
 
       <!-- Header Actions -->
@@ -70,72 +69,46 @@
   <!-- Main Container -->
   <main class="container">
 
+    <!-- Non-official educational notice -->
+    <div class="disclaimer-banner">
+      <span class="disclaimer-icon">ℹ️</span>
+      <div>
+        <strong>Nota informativa:</strong> Este portal es un recurso didáctico y colaborativo creado para el alumnado del Curso de Especialización de Ciberseguridad del IES Celia Viñas. <em>No es la web oficial del centro educativo.</em>
+      </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero-section">
       <div class="hero-badge-container">
         <span class="pulse-dot"></span>
-        <span>IES Celia Viñas • Curso de Especialización de Ciberseguridad</span>
+        <span>Recurso de Aprendizaje • Ciberseguridad</span>
       </div>
 
       <h1 class="hero-title">
-        Aprende, Colabora y Protege con <span class="gradient-text">CiberCelia</span>
+        Hub Colaborativo <span class="gradient-text">CiberCelia</span>
       </h1>
 
       <p class="hero-description">
-        Espacio de conocimiento abierto y colaborativo creado por el alumnado. Publica tus análisis de seguridad, descubre recursos clave, comparte noticias y consulta nuestro glosario oficial.
+        Espacio para compartir artículos técnicos, análisis de vulnerabilidades, enlaces recomendados, cursos y repositorios de práctica del curso.
       </p>
 
       <!-- Key Metrics -->
       <div class="metrics-grid">
         <div class="metric-card">
-          <div class="metric-number">100%</div>
-          <div class="metric-label">Open Source & Colaborativo</div>
-        </div>
-        <div class="metric-card">
           <div class="metric-number">Docs-as-Code</div>
           <div class="metric-label">Metodología Git & PR</div>
         </div>
         <div class="metric-card">
-          <div class="metric-number">Glosario</div>
-          <div class="metric-label">Términos y Conceptos</div>
+          <div class="metric-number">Posts & Labs</div>
+          <div class="metric-label">Artículos del Alumnado</div>
         </div>
         <div class="metric-card">
-          <div class="metric-number">IES Celia Viñas</div>
-          <div class="metric-label">Almería, España</div>
+          <div class="metric-number">Recursos</div>
+          <div class="metric-label">Herramientas y Cursos</div>
         </div>
-      </div>
-    </section>
-
-    <!-- Glosario Spotlight Banner -->
-    <section id="glosario" class="glosario-spotlight">
-      <div class="spotlight-card">
-        <div class="spotlight-content">
-          <span class="spotlight-tag">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-            Repositorio Destacado
-          </span>
-          <h2 class="spotlight-title">Glosario Colaborativo de Ciberseguridad</h2>
-          <p class="spotlight-text">
-            Diccionario técnico desarrollado por el alumnado del curso de especialización con metodología Docs-as-Code (MkDocs Material). Consulta definiciones rigurosas con ejemplos, arquitectura y referencias oficiales.
-          </p>
-          <div class="spotlight-terms">
-            <a href="https://cibercelia.github.io/glosario/terms/mfa/" target="_blank" rel="noopener noreferrer" class="term-pill">🔑 MFA (Multi-Factor)</a>
-            <span class="term-pill">🛡️ Zero Trust</span>
-            <span class="term-pill">💉 SQL Injection</span>
-            <span class="term-pill">🔒 FIDO2 / Passkeys</span>
-            <span class="term-pill">🕵️ Ransomware</span>
-            <span class="term-pill">📜 Directiva NIS2</span>
-          </div>
-        </div>
-        <div class="spotlight-actions">
-          <a href="https://cibercelia.github.io/glosario/" target="_blank" rel="noopener noreferrer" class="btn-primary-glow">
-            <span>Acceder al Glosario</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-          <a href="https://github.com/cibercelia/glosario" target="_blank" rel="noopener noreferrer" class="btn-secondary-outline">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-            <span>Ver Repo en GitHub</span>
-          </a>
+        <div class="metric-card">
+          <div class="metric-number">Repositorios</div>
+          <div class="metric-label">Proyectos Abiertos</div>
         </div>
       </div>
     </section>
@@ -169,7 +142,7 @@
         <button class="tag-filter-btn" data-tag="web">#web</button>
         <button class="tag-filter-btn" data-tag="laboratorio">#laboratorio</button>
         <button class="tag-filter-btn" data-tag="ctf">#ctf</button>
-        <button class="tag-filter-btn" data-tag="certificacion">#certificacion</button>
+        <button class="tag-filter-btn" data-tag="glosario">#glosario</button>
         <button class="tag-filter-btn" data-tag="nis2">#nis2</button>
       </div>
     </section>
@@ -179,7 +152,7 @@
       <div class="section-header">
         <h2 class="section-title">
           <span class="section-title-icon">◈</span>
-          <span>Explorar Publicaciones y Recursos</span>
+          <span>Publicaciones y Recursos</span>
           <span id="results-count" class="section-count">(0)</span>
         </h2>
       </div>
@@ -194,10 +167,10 @@
     <section id="contribuir" class="contribute-section">
       <div class="contribute-box">
         <div style="text-align: center; max-width: 650px; margin: 0 auto;">
-          <span class="spotlight-tag">Metodología Docs-as-Code</span>
-          <h2 style="font-size: 1.8rem; margin-bottom: 0.75rem;">¿Cómo publicar en CiberCelia?</h2>
+          <span class="category-tag post" style="display: inline-block; margin-bottom: 0.5rem;">Docs-as-Code</span>
+          <h2 style="font-size: 1.8rem; margin-bottom: 0.75rem;">¿Cómo colaborar en CiberCelia?</h2>
           <p style="color: var(--text-secondary); font-size: 0.95rem;">
-            Todo el alumnado del Curso de Especialización de Ciberseguridad del IES Celia Viñas puede publicar artículos, noticias o recursos mediante Pull Requests en GitHub.
+            El alumnado puede publicar artículos técnicos, enlaces de interés o noticias mediante Pull Requests en GitHub.
           </p>
         </div>
 
@@ -206,7 +179,7 @@
             <div class="step-number">01</div>
             <h3 class="step-title">Haz Fork del repositorio</h3>
             <p class="step-desc">
-              Bifurca el repositorio oficial en tu cuenta de GitHub y clónalo en tu entorno local.
+              Bifurca el repositorio en tu cuenta de GitHub y clónalo en tu equipo.
             </p>
             <code class="step-code">git clone https://github.com/TU_USUARIO/cibercelia.git</code>
           </div>
@@ -215,16 +188,16 @@
             <div class="step-number">02</div>
             <h3 class="step-title">Añade tu contenido Markdown</h3>
             <p class="step-desc">
-              Crea tu archivo <code style="font-size: 0.8em; color: var(--accent-cyan)">.md</code> en <code style="font-size: 0.8em; color: var(--accent-cyan)">content/posts/</code> con metadatos de autor y etiquetas.
+              Crea tu archivo <code style="font-size: 0.8em; color: var(--accent-cyan)">.md</code> en <code style="font-size: 0.8em; color: var(--accent-cyan)">content/posts/</code> con metadatos de autor.
             </p>
-            <code class="step-code">cp content/posts/01-plantilla.md content/posts/mi-post.md</code>
+            <code class="step-code">content/posts/mi-nuevo-articulo.md</code>
           </div>
 
           <div class="step-card">
             <div class="step-number">03</div>
             <h3 class="step-title">Abre una Pull Request</h3>
             <p class="step-desc">
-              Sube tus cambios a una nueva rama y abre un PR en la organización <code style="font-size: 0.8em; color: var(--accent-cyan)">cibercelia</code> para revisión.
+              Sube tus cambios en una rama y abre un PR en <code style="font-size: 0.8em; color: var(--accent-cyan)">cibercelia</code> para revisión.
             </p>
             <code class="step-code">git push origin mi-nuevo-articulo</code>
           </div>
@@ -232,7 +205,7 @@
 
         <div style="text-align: center; margin-top: 1.5rem;">
           <a href="https://github.com/cibercelia/cibercelia/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" class="btn-primary-glow">
-            <span>Consultar Guía Completa de Contribución</span>
+            <span>Ver Guía Paso a Paso de Contribución</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
           </a>
         </div>
@@ -240,25 +213,6 @@
     </section>
 
   </main>
-
-  <!-- Modal Article Reader -->
-  <div id="article-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-article-title">
-    <div class="modal-container">
-      <div class="modal-header">
-        <div>
-          <span id="modal-category-badge" class="category-tag post">POST</span>
-          <h2 id="modal-article-title" style="font-size: 1.3rem; margin-top: 0.35rem;">Título del Artículo</h2>
-          <div id="modal-meta-info" class="card-meta" style="margin-top: 0.25rem;"></div>
-        </div>
-        <button id="modal-close-btn" class="modal-close-btn" aria-label="Cerrar modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div id="modal-markdown-content" class="markdown-body">
-          <!-- Markdown Content Rendered Here -->
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Site Footer -->
   <footer class="site-footer">
@@ -270,41 +224,40 @@
             <span class="brand-title">CiberCelia</span>
           </div>
           <p>
-            Plataforma colaborativa de ciberseguridad impulsada por el alumnado del Curso de Especialización de Ciberseguridad del <strong>IES Celia Viñas</strong> (Almería).
+            Recurso didáctico colaborativo creado para el alumnado del Curso de Especialización de Ciberseguridad del IES Celia Viñas.
           </p>
         </div>
 
         <div class="footer-col">
           <h4>Secciones</h4>
           <ul class="footer-links">
-            <li><a href="#hub">Explorar Contenidos</a></li>
-            <li><a href="https://cibercelia.github.io/glosario/" target="_blank" rel="noopener noreferrer">Glosario Oficial</a></li>
-            <li><a href="#contribuir">Guía de Contribución</a></li>
+            <li><a href="index.html#hub">Explorar Contenidos</a></li>
+            <li><a href="https://cibercelia.github.io/glosario/" target="_blank" rel="noopener noreferrer">Glosario de Términos</a></li>
+            <li><a href="index.html#contribuir">Guía para Colaborar</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Organización</h4>
           <ul class="footer-links">
-            <li><a href="https://github.com/cibercelia" target="_blank" rel="noopener noreferrer">GitHub Cibercelia</a></li>
+            <li><a href="https://github.com/cibercelia" target="_blank" rel="noopener noreferrer">Organización GitHub</a></li>
             <li><a href="https://github.com/cibercelia/glosario" target="_blank" rel="noopener noreferrer">Repositorio Glosario</a></li>
             <li><a href="https://github.com/cibercelia/cibercelia" target="_blank" rel="noopener noreferrer">Repositorio Web</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Centro Educativo</h4>
+          <h4>Referencias</h4>
           <ul class="footer-links">
-            <li><a href="https://www.iescelia.org/" target="_blank" rel="noopener noreferrer">IES Celia Viñas</a></li>
-            <li><a href="https://www.juntadeandalucia.es/educacion/portals/web/formacion-profesional-andaluza/especializaciones" target="_blank" rel="noopener noreferrer">FP Ciberseguridad</a></li>
+            <li><a href="https://www.iescelia.org/" target="_blank" rel="noopener noreferrer">Web IES Celia Viñas</a></li>
             <li><a href="https://www.incibe.es/" target="_blank" rel="noopener noreferrer">INCIBE</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>© 2026 CiberCelia • IES Celia Viñas. Desarrollado con metodología Docs-as-Code.</p>
-        <p>Código abierto bajo licencia MIT.</p>
+        <p>© 2026 CiberCelia • Recurso didáctico independiente bajo metodología Docs-as-Code.</p>
+        <p>No oficial • Código abierto MIT</p>
       </div>
     </div>
   </footer>

@@ -1,6 +1,8 @@
 # 🛡️ Guía de Contribución para Estudiantes - CiberCelia
 
-¡Bienvenido/a al repositorio oficial del **Portal CiberCelia**! Este espacio está gestionado por y para el alumnado del **Curso de Especialización de Ciberseguridad del IES Celia Viñas**.
+¡Bienvenido/a al repositorio del **Portal CiberCelia**! Este espacio es un recurso didáctico colaborativo creado para el alumnado del **Curso de Especialización de Ciberseguridad del IES Celia Viñas**.
+
+> **Nota:** Este portal es un proyecto educativo de apoyo a clase y prácticas, no es la web oficial institucional del centro.
 
 Aquí aprenderás y aplicarás la metodología **Docs-as-Code**: tratar la documentación, los artículos técnicos y los recursos con el mismo rigor, control de versiones y flujo de trabajo que el código software profesional.
 
@@ -60,7 +62,7 @@ git push origin post/analisis-malware-yara
 ### Paso 7: Abrir la Pull Request (PR)
 1. Ve a GitHub y verás el botón **Compare & pull request**.
 2. Rellena la plantilla de PR marcando las casillas correspondientes.
-3. El profesorado o compañeros revisarán tu PR y, una vez aprobada, ¡se publicará automáticamente en la web oficial!
+3. El profesorado o compañeros revisarán tu PR y, una vez aprobada, ¡se publicará automáticamente en la web!
 
 ---
 
@@ -134,9 +136,9 @@ Si quieres recomendar una herramienta o laboratorio, añade una entrada en `cont
 
 ## 5. Enlazar con el Glosario de Ciberseguridad
 
-El [Glosario Oficial de Ciberseguridad](https://cibercelia.github.io/glosario/) es el pilar conceptual de nuestra organización.
+El [Glosario Colaborativo de Ciberseguridad](https://cibercelia.github.io/glosario/) es uno de los proyectos de la organización.
 
-Siempre que en tu artículo utilices términos técnicos clave (como *MFA*, *Zero Trust*, *Ransomware*, *SIEM*, etc.), añade un enlace o referencia al glosario:
+Siempre que en tu artículo utilices términos técnicos clave (como *MFA*, *Zero Trust*, *Ransomware*, *SIEM*, etc.), puedes añadir un enlace o referencia al glosario:
 
 ```markdown
 Para profundizar en este concepto, consulta el término [MFA en el Glosario](https://cibercelia.github.io/glosario/terms/mfa/).
