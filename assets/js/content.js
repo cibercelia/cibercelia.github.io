@@ -4,14 +4,14 @@
  */
 
 const CIBERCELIA_CONTENT = {
-  // Posts index
+  // Posts index (Guías y Artículos Técnicos reales)
   posts: [
     {
       id: "01-guia-pentesting-laboratorio",
       title: "Guía para montar tu propio Laboratorio de Pentesting con VirtualBox y Docker",
       category: "post",
       date: "2026-10-05",
-      author: "Equipo CiberCelia",
+      author: "CiberCelia",
       author_github: "cibercelia",
       tags: ["pentesting", "laboratorio", "docker", "redteam", "virtualizacion"],
       summary: "Paso a paso para desplegar un entorno seguro y aislado en local para practicar técnicas ofensivas y análisis forense sin riesgos.",
@@ -90,7 +90,7 @@ nmap -sV -sC -Pn -T4 192.168.56.20 -oN escaneo_inicial.txt
       title: "Análisis en Profundidad de Log4Shell (CVE-2021-44228)",
       category: "post",
       date: "2026-10-02",
-      author: "Estudiante CiberCelia",
+      author: "CiberCelia",
       author_github: "cibercelia",
       tags: ["cve", "vulnerabilidad", "java", "jndi", "blueteam"],
       summary: "Estudio técnico de una de las vulnerabilidades más críticas de la historia reciente: origen JNDI, mecanismo de inyección y contramedidas.",
@@ -162,7 +162,7 @@ level: critical
       title: "MFA Seguro: De contraseñas débiles a Passkeys y FIDO2",
       category: "post",
       date: "2026-09-28",
-      author: "Alumnado IES Celia Viñas",
+      author: "CiberCelia",
       author_github: "cibercelia",
       tags: ["mfa", "fido2", "autenticacion", "passkeys", "glosario"],
       summary: "Comparativa entre SMS, TOTP y llaves de seguridad físicas resistentes a ataques de phishing de adversario intermediario (AiTM).",
@@ -220,70 +220,73 @@ El estándar **FIDO2 (WebAuthn)** utiliza criptografía asimétrica vinculada cr
     }
   ],
 
-  // Noticias index
+  // Noticias index (Avisos e hitos reales)
   noticias: [
     {
-      id: "noticia-01-clasificacion-ctf",
-      title: "El equipo del IES Celia Viñas compite en el CTF Nacional de Ciberseguridad",
+      id: "01-inicio-glosario-ciberseguridad",
+      title: "Inicio del proyecto Glosario Colaborativo de Ciberseguridad",
       category: "noticia",
-      date: "2026-10-06",
-      author: "Departamento de Informática",
+      date: "2026-10-01",
+      author: "CiberCelia",
       author_github: "cibercelia",
-      tags: ["ctf", "alumnado", "iesceliavinas", "competicion", "web"],
-      summary: "El alumnado del curso de especialización ha puesto a prueba sus habilidades en retos de criptografía, reversing, esteganografía y explotación web.",
-      file: "content/noticias/01-equipo-ies-celia-vinas-clasifica-ctf.md",
+      tags: ["glosario", "docs-as-code", "mkdocs", "proyectos", "colaborativo"],
+      summary: "Puesta en marcha del repositorio glosario de CiberCelia para documentar términos y conceptos clave de seguridad mediante metodología Docs-as-Code.",
+      file: "content/noticias/01-inicio-glosario-ciberseguridad.md",
       readingTime: "2 min",
       content: `
-# El alumnado de Ciberseguridad destaca en el CTF Nacional
+# Inicio del proyecto Glosario Colaborativo de Ciberseguridad
 
-Los estudiantes del **Curso de Especialización en Ciberseguridad del IES Celia Viñas** han participado en la fase clasificatoria del CTF Nacional para centros educativos de FP.
+El alumnado del Curso de Especialización de Ciberseguridad del IES Celia Viñas cuenta con un nuevo espacio colaborativo: el **Glosario de Ciberseguridad**.
 
-A lo largo de 48 horas continuas, los miembros del equipo resolvieron desafíos de:
+El repositorio, alojado en [github.com/cibercelia/glosario](https://github.com/cibercelia/glosario) y desplegado en [cibercelia.github.io/glosario](https://cibercelia.github.io/glosario/), está construido mediante **MkDocs Material** y permite que los estudiantes contribuyan con nuevas definiciones, esquemas y referencias técnicas a través de Pull Requests.
 
-1. **Web Exploitation**: Inyecciones SQL ciegas, bypass de autenticación JWT y deserialización insegura.
-2. **Criptografía**: Cifrados clásicos, rotura de claves débiles RSA y padding oracle attacks.
-3. **Forense y Reversing**: Análisis de capturas de tráfico \`.pcapng\` y desensamblado con Ghidra.
+---
 
-¡Enhorabuena a todo el equipo por el esfuerzo y los resultados conseguidos! Los writeups de las soluciones se publicarán próximamente en este mismo portal.
+## Objetivos del Glosario
+
+1. **Construir una base de conocimiento común**: Documentar términos fundamentales (autenticación, criptografía, normativas, técnicas ofensivas y defensivas) con rigor técnico.
+2. **Practicar Docs-as-Code**: Familiarizarse con el flujo de trabajo estándar en la industria (Git, ramas, Markdown, revisión por pares y despliegue continuo).
+3. **Referencias compartidas**: Servir de consulta para las prácticas, laboratorios y proyectos desarrollados a lo largo del curso.
 `
     },
     {
-      id: "noticia-02-directiva-nis2",
+      id: "02-entrada-en-vigor-directiva-nis2",
       title: "Transposición y claves de la Directiva Europea NIS2 para entidades esenciales",
       category: "noticia",
       date: "2026-10-01",
-      author: "Comité CiberCelia",
+      author: "CiberCelia",
       author_github: "cibercelia",
       tags: ["nis2", "normativa", "cumplimiento", "cni", "incibe"],
-      summary: "Resumen de las obligaciones de gestión de riesgos, notificación de incidentes tempranos y sanciones que introduce el nuevo marco regulatorio europeo.",
+      summary: "Resumen de las obligaciones de gestión de riesgos, notificación de incidentes tempranos y medidas técnicas del marco regulatorio europeo NIS2.",
       file: "content/noticias/02-entrada-en-vigor-directiva-nis2.md",
       readingTime: "3 min",
       content: `
 # Claves de la Directiva NIS2 en el panorama de la Ciberseguridad
 
-La directiva **NIS2 (Network and Information Security Directive 2)** amplía notablemente el alcance de los sectores considerados críticos o importantes y endurece las obligaciones de gobierno de la seguridad.
+La directiva **NIS2 (Directiva UE 2022/2555)** amplía notablemente el alcance de los sectores considerados de alta criticidad e introduce requerimientos estrictos de gobernanza y gestión del riesgo operacional en ciberseguridad.
 
 ---
 
-## Principales Novedades
+## Principales Obligaciones
 
-- **Sectores Ampliados**: Además de energía, banca y salud, se incorporan administraciones públicas, telecomunicaciones, plataformas cloud, gestión de residuos y alimentación.
-- **Responsabilidad de la Dirección**: Los órganos de dirección deben supervisar y aprobar formalmente las medidas de gestión de riesgos y responder legalmente por los incumplimientos.
+- **Sectores Ampliados**: Además de energía, transporte, banca y salud, se incorporan administraciones públicas, proveedores de servicios gestionados (MSP), servicios en la nube, centros de datos y redes públicas de telecomunicaciones.
+- **Responsabilidad de los Órganos de Dirección**: Obligación de formación regular en ciberseguridad y supervisión directa de las políticas de gestión de riesgos.
 - **Plazos de Notificación de Incidentes**:
-  1. *Alerta temprana*: En un plazo máximo de **24 horas** desde la detección del incidente significativo.
-  2. *Notificación de incidente*: Evaluación inicial en **72 horas**.
+  1. *Alerta temprana*: En un plazo máximo de **24 horas** desde la detección de un incidente significativo al CSIRT de referencia.
+  2. *Notificación de incidente*: Evaluación técnica inicial en **72 horas**.
   3. *Informe final*: En un plazo de **1 mes**.
 
 ---
 
-## Recursos Recomendados
-- Guías CCN-STIC del Centro Criptológico Nacional (CCN-CERT).
-- Marcos de controles de seguridad básicos de INCIBE para pymes y entidades medianas.
+## Enlaces y Documentación Oficial
+- [Directiva (UE) 2022/2555 del Parlamento Europeo y del Consejo](https://eur-lex.europa.eu/eli/dir/2022/2555/oj)
+- [Guías del Centro Criptológico Nacional (CCN-CERT)](https://www.ccn-cert.cni.es/)
+- [Avisos y servicios de INCIBE-CERT](https://www.incibe.es/incibe-cert)
 `
     }
   ],
 
-  // Recursos dataset
+  // Recursos dataset (Herramientas y plataformas reales)
   recursos: [
     {
       id: "rec-portswigger",
@@ -313,7 +316,7 @@ La directiva **NIS2 (Network and Information Security Directive 2)** amplía not
       category: "recurso",
       url: "https://tryhackme.com/",
       summary: "Salas guiadas paso a paso ideales para iniciarse en ciberseguridad, redes, Linux, Windows y herramientas ofensivas.",
-      tags: ["principiantes", "laboratorio", "redteam", "blueteam"],
+      tags: ["laboratorio", "redteam", "blueteam"],
       badge: "Esencial",
       author: "CiberCelia",
       date: "2026-10-01"
@@ -375,7 +378,7 @@ La directiva **NIS2 (Network and Information Security Directive 2)** amplía not
     }
   ],
 
-  // Cursos dataset
+  // Cursos dataset (Cursos y certificaciones oficiales reales)
   cursos: [
     {
       id: "curso-roadmap-ciber",
@@ -395,7 +398,7 @@ La directiva **NIS2 (Network and Information Security Directive 2)** amplía not
       category: "curso",
       url: "https://www.comptia.org/certifications/security",
       summary: "Certificación internacional de referencia que valida las habilidades básicas necesarias para desempeñar funciones clave de seguridad.",
-      tags: ["certificacion", "comptia", "seguridad", "entry-level"],
+      tags: ["certificacion", "comptia", "seguridad"],
       provider: "CompTIA",
       level: "Intermedio",
       type: "Certificación Oficial",
@@ -419,7 +422,7 @@ La directiva **NIS2 (Network and Information Security Directive 2)** amplía not
       category: "curso",
       url: "https://skillsforall.com/",
       summary: "Cursos oficiales gratuitos de Cisco Networking Academy sobre defensa de redes, respuesta a incidentes y conceptos clave.",
-      tags: ["cisco", "redes", "gratis", "certificacion-insignia"],
+      tags: ["cisco", "redes", "gratis"],
       provider: "Cisco",
       level: "Iniciación",
       type: "Curso Gratuito",
@@ -439,7 +442,7 @@ La directiva **NIS2 (Network and Information Security Directive 2)** amplía not
     }
   ],
 
-  // Proyectos dataset
+  // Proyectos dataset (Repositorios reales existentes)
   proyectos: [
     {
       id: "proj-glosario",
@@ -447,35 +450,23 @@ La directiva **NIS2 (Network and Information Security Directive 2)** amplía not
       category: "proyecto",
       url: "https://cibercelia.github.io/glosario/",
       github_url: "https://github.com/cibercelia/glosario",
-      summary: "Diccionario y repositorio colaborativo de términos y conceptos de seguridad creado por el alumnado mediante Docs-as-Code (MkDocs Material).",
-      tags: ["glosario", "docs-as-code", "mkdocs", "colaborativo", "iesceliavinas"],
-      badge: "Destacado",
+      summary: "Diccionario y base de conocimiento colaborativa de términos y conceptos de seguridad desarrollado mediante Docs-as-Code (MkDocs Material).",
+      tags: ["glosario", "docs-as-code", "mkdocs", "colaborativo"],
+      badge: "Repositorio",
       stars: "GitHub Repo",
       date: "2026-10-01"
     },
     {
       id: "proj-cibercelia-web",
-      title: "CiberCelia Portal Hub",
+      title: "Portal CiberCelia",
       category: "proyecto",
-      url: "https://cibercelia.github.io/",
+      url: "https://cibercelia.github.io/cibercelia/",
       github_url: "https://github.com/cibercelia/cibercelia",
-      summary: "Portal principal de la organización: repositorio central de artículos técnicos, enlaces, noticias de interés y recursos del curso.",
+      summary: "Repositorio del portal web: centraliza artículos técnicos, enlaces seleccionados, avisos y proyectos del curso de especialización.",
       tags: ["portal", "github-pages", "articulos", "recursos"],
-      badge: "Principal",
+      badge: "Repositorio",
       stars: "GitHub Repo",
       date: "2026-10-01"
-    },
-    {
-      id: "proj-ctf-writeups",
-      title: "CiberCelia CTF Writeups",
-      category: "proyecto",
-      url: "https://github.com/cibercelia",
-      github_url: "https://github.com/cibercelia",
-      summary: "Colección de soluciones documentadas paso a paso de retos CTF, máquinas de HTB/THM y ejercicios de laboratorio.",
-      tags: ["ctf", "writeups", "redteam", "forense", "cripto"],
-      badge: "Laboratorio",
-      stars: "En desarrollo",
-      date: "2026-09-20"
     }
   ]
 };
@@ -531,7 +522,6 @@ const MarkdownEngine = {
 
     // Standard blockquotes
     raw = raw.replace(/^>\s?(.*)$/gm, '<blockquote>$1</blockquote>');
-    // Group consecutive blockquotes
     raw = raw.replace(/<\/blockquote>\n<blockquote>/g, '<br>');
 
     // Headers
@@ -574,10 +564,10 @@ const MarkdownEngine = {
     raw = raw.replace(/<\/ul>\n<ul>/g, '');
 
     // Ordered Lists
-    raw = raw.replace(/^\s*\d+\.\s+(.*)$/gm, '<ol><li>$1</li></ol>');
+    raw = raw.replace(/^\s*\d+\.\s+(.*)$/gm, '<ol><li>$1</ol>');
     raw = raw.replace(/<\/ol>\n<ol>/g, '');
 
-    // Paragraphs: Wrap lines that aren't tags
+    // Paragraphs
     const lines = raw.split('\n\n');
     raw = lines.map(block => {
       block = block.trim();
@@ -612,10 +602,10 @@ const MarkdownEngine = {
     text = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="img-fluid" loading="lazy">');
     // Links: [text](url)
     text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
-    // Bold: **text** or __text__
+    // Bold: **text**
     text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     text = text.replace(/__(.*?)__/g, '<strong>$1</strong>');
-    // Italic: *text* or _text_
+    // Italic: *text*
     text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
     text = text.replace(/_([^_]+)_/g, '<em>$1</em>');
     // Strikethrough: ~~text~~

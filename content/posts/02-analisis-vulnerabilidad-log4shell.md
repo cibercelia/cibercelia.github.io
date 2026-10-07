@@ -1,7 +1,7 @@
 ---
 title: "Análisis en Profundidad de Log4Shell (CVE-2021-44228)"
 date: "2026-10-02"
-author: "Estudiante CiberCelia"
+author: "CiberCelia"
 author_github: "cibercelia"
 category: "post"
 tags: ["cve", "vulnerabilidad", "java", "jndi", "blueteam"]
@@ -28,7 +28,7 @@ Cuando Log4j procesaba un mensaje que contenía esta cadena (por ejemplo, en la 
 
 ## Flujo del Ataque
 
-```
+```text
 [Atacante] --( Petición HTTP con payload ${jndi:...} )--> [Servidor Vulnerable (Log4j)]
                                                                     |
                                                             (Consulta LDAP JNDI)

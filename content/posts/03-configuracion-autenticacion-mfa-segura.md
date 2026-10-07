@@ -1,7 +1,7 @@
 ---
 title: "MFA Seguro: De contraseñas débiles a Passkeys y FIDO2"
 date: "2026-09-28"
-author: "Alumnado IES Celia Viñas"
+author: "CiberCelia"
 author_github: "cibercelia"
 category: "post"
 tags: ["mfa", "fido2", "autenticacion", "passkeys", "glosario"]
@@ -33,7 +33,7 @@ La autenticación multifactor (**MFA**) es la primera línea de defensa para pro
 
 El estándar **FIDO2 (WebAuthn)** utiliza criptografía asimétrica vinculada criptográficamente al dominio del navegador (`Origin binding`):
 
-```
+```text
 +---------------+              +--------------------+              +-------------------+
 |  Navegador /  |              | Servidor Auténtico |              | Servidor Phishing |
 | Llave Física  |              | (banco.com)        |              | (banc0-login.com) |
